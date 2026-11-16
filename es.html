@@ -1,352 +1,231 @@
-<!DOCTYPE html>
-
-<html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>PLAYMOBIL – SAC Training</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-<body @keydown.escape.window="closeOverlays()" class="bg-gray-800 text-white" x-data="presentationApp()">
-<main class="h-dvh overflow-y-auto snap-y snap-mandatory scroll-smooth" x-data="" x-init="
-        $nextTick(() =&gt; {
-            const observer = new IntersectionObserver((entries) =&gt; {
-                entries.forEach(entry =&gt; {
-                    if (!entry.isIntersecting) return;
-
-                    const cards = entry.target.querySelectorAll('[data-reveal]');
-
-                    cards.forEach((card, index) =&gt; {
-                        card.style.transitionDelay = `${index * 120}ms`;
-
-                        requestAnimationFrame(() =&gt; {
-                            card.classList.remove('opacity-0', 'translate-y-5');
-                        });
-                    });
-
-                    observer.unobserve(entry.target);
-                });
-            }, {
-                root: $el,
-                threshold: 0.15
-            });
-
-            $el.querySelectorAll('section').forEach(section =&gt; {
-                observer.observe(section);
-            });
-        });
-    ">
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>PLAYMOBIL · Centro de formación SAC</title>
+<link rel="stylesheet" href="css/tailwind.css"><link rel="stylesheet" href="css/center.css"><link rel="stylesheet" href="css/presentation.css">
+<script defer src="js/i18n.js"></script><script defer src="js/presentation.js"></script><script defer src="js/vendor/alpine-3.15.8.min.js"></script></head>
+<body class="presentation bg-gray-800 text-white" x-data="{showContext:false}">
+<main class="h-dvh overflow-y-auto scroll-smooth" id="training">
 <!-- SECTION 1 - WELCOME -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-1">
 <div class="flex-1 flex items-center justify-center text-center p-6">
-<h1 class="opacity-0 translate-y-5 transition-all duration-500 ease-out text-4xl md:text-6xl font-bold" data-reveal="">
-                Bienvenidos a mi presentación de PLAYMOBIL
-            </h1>
+<h1 class="opacity-0 translate-y-5 transition-all duration-500 ease-out text-4xl md:text-6xl font-bold" data-reveal=""> Bienvenidos a la formación SAC de PLAYMOBIL </h1>
 </div>
 <div class="flex-1 flex items-center justify-center text-center p-6">
 
 </div>
 <div class="flex justify-end p-6">
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-2">
-                Siguiente ↓
-            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-2"> Siguiente ↓ </a>
 </div>
 </section>
 <!-- SECTION 2 - DELIVERY TIME -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-2">
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                Plazos de entrega y gastos de transporte
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> Plazos de entrega y gastos de transporte </h1>
 </div>
 <div class="flex-1 min-h-0 grid grid-rows-2 gap-5 px-6 pb-4">
 <!-- CARD 1 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 p-6 rounded-2xl shadow-lg grid grid-cols-3 gap-3 items-center text-center" data-reveal="">
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    Surtido regular
-                </p>
-<p class="text-2xl md:text-4xl">→</p>
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    6-8 días hábiles
-                </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> Surtido regular </p>
+<p class="text-2xl md:text-4xl"> → </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> 6–8 días hábiles </p>
 </div>
 <!-- CARD 2 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 p-6 rounded-2xl shadow-lg grid grid-cols-3 gap-3 items-center text-center" data-reveal="">
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    Piezas sueltas
-                </p>
-<p class="text-2xl md:text-4xl">→</p>
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    Up to 10 weeks
-                </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> Piezas sueltas </p>
+<p class="text-2xl md:text-4xl"> → </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> Hasta 10 semanas </p>
 </div>
 </div>
 <div class="flex justify-between p-6">
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1">
-                ↑ Anterior
-            </a>
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-3">
-                Siguiente ↓
-            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1"> ↑ Anterior </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-3"> Siguiente ↓ </a>
 </div>
 </section>
 <!-- SECTION 3 - SHIPPING COSTS -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-3">
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                Gastos de envío
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> Gastos de envío </h1>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-3 gap-5 px-6 pb-4">
 <!-- CARD 1 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
-<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
-                    España / Portugal
-                </p>
-<p class="text-xl md:text-3xl font-semibold">
-                    9 EUR
-                </p>
-<p class="text-lg md:text-xl">
-                    Envío gratuito a partir de 60 EUR
-                </p>
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full"> España / Portugal </p>
+<p class="text-xl md:text-3xl font-semibold"> 9 EUR </p>
+<p class="text-lg md:text-xl"> Promoción de envío gratuito: consultar las condiciones aplicables a compras superiores a 60 EUR </p>
 </div>
 <!-- CARD 2 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
-<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
-                    Canarias / Ceuta / Melilla
-                </p>
-<p class="text-xl md:text-3xl font-semibold">
-                    22 EUR
-                </p>
-<p class="text-lg md:text-xl">
-                    Envío gratuito a partir de 150 EUR
-                </p>
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full"> Canarias / Ceuta / Melilla </p>
+<p class="text-xl md:text-3xl font-semibold"> 22 EUR </p>
+<p class="text-lg md:text-xl"> Envío gratuito para compras superiores a 150 EUR; consultar las condiciones </p>
 </div>
 <!-- CARD 3 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
-<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
-                    Azores / Madeira
-                </p>
-<p class="text-xl md:text-3xl font-semibold">
-                    22 EUR
-                </p>
-<p class="text-lg md:text-xl">
-                    Envío gratuito a partir de 150 EUR
-                </p>
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full"> Azores / Madeira </p>
+<p class="text-xl md:text-3xl font-semibold"> 22 EUR </p>
+<p class="text-lg md:text-xl"> Envío gratuito para compras superiores a 150 EUR; consultar las condiciones </p>
 </div>
 </div>
 <div class="flex justify-between p-6">
-<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-2">
-                ↑ Anterior
-            </a>
-<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-4">
-                Siguiente ↓
-            </a>
+<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-2"> ↑ Anterior </a>
+<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-4"> Siguiente ↓ </a>
 </div>
 </section>
- SECTION 4 - PROCESO DE COMPRA 
+<!-- SECTION 4 - BOOKING PROCESS -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-4">
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                PROCESO DE COMPRA
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> PROCESO DE COMPRA </h1>
 </div>
 <!-- BOOKING STEPS -->
 <div class="flex-1 min-h-0 grid grid-cols-5 gap-4 px-5 pb-4">
 <!-- STEP 1 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">1.</span>
+<span class="text-3xl font-bold"> 1. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    After booking the order
-                </h2>
+<h2 class="text-xl font-bold mb-5"> Tras realizar el pedido </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client receives a generic confirmation email.
-                </p>
+<p class="text-lg md:text-xl"> El cliente recibe un correo de confirmación. </p>
 </div>
 <!-- STEP 2 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">2.</span>
+<span class="text-3xl font-bold"> 2. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    Pedido leaves the warehouse
-                </h2>
+<h2 class="text-xl font-bold mb-5"> El pedido sale del almacén </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client receives an email with the invoice.
-                </p>
+<p class="text-lg md:text-xl"> El cliente recibe un correo con la factura. </p>
 </div>
 <!-- STEP 3 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">3.</span>
+<span class="text-3xl font-bold"> 3. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    Transport agency takes the order
-                </h2>
+<h2 class="text-xl font-bold mb-5"> La agencia de transporte recibe el pedido </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    DHL / UPS sends the client an email with delivery information.
-                </p>
+<p class="text-lg md:text-xl"> DHL, CTT o UPS envía un correo con información del envío. Conviene revisar también el correo no deseado. </p>
 </div>
 <!-- STEP 4 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">4.</span>
+<span class="text-3xl font-bold"> 4. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    The client receives the order
-                </h2>
+<h2 class="text-xl font-bold mb-5"> El cliente recibe el pedido </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client has 14 DAYS to make a claim or cancel and return the order.
-                </p>
+<p class="text-lg md:text-xl"> Los documentos discrepan sobre el plazo de desistimiento. Consulta los Términos y Condiciones aprobados y, en caso de duda, al responsable de SAC. </p>
 </div>
 <!-- STEP 5 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">5.</span>
+<span class="text-3xl font-bold"> 5. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    Return / cancellation
-                </h2>
+<h2 class="text-xl font-bold mb-5"> Devolución / cancelación </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client pays the return costs when cancelling. If the order is damaged, Playmobil covers them.
-                </p>
+<p class="text-lg md:text-xl"> El cliente asume los gastos de devolución. PLAYMOBIL los asume si los daños se notificaron en el momento de la entrega y constan en el justificante. </p>
 </div>
 </div>
 <div class="flex justify-between p-6">
-<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-3">
-                ↑ Anterior
-            </a>
-<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-5">
-                Siguiente ↓
-            </a>
+<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-3"> ↑ Anterior </a>
+<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-5"> Siguiente ↓ </a>
 </div>
 </section>
 <!-- SECTION 5 - SAP GENERAL GUIDELINES -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-5">
 <!-- TITLE -->
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                Directrices generales de SAP
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> Directrices generales de SAP </h1>
 </div>
 <!-- CARDS -->
 <div class="flex-1 min-h-0 grid grid-cols-3 gap-6 px-6 pb-4">
 <!-- CARD 1 - SALES ORGANIZATION -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-8" data-reveal="">
-<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
-                    Organización de ventas
-                </h2>
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300"> Organización de ventas </h2>
 <div class="w-16 border-t-2 border-purple-400"></div>
 <div class="w-full bg-gray-800 rounded-xl p-5">
-<p class="text-lg text-gray-400 mb-2">España</p>
-<p class="text-3xl md:text-4xl font-bold">2090</p>
+<p class="text-lg text-gray-400 mb-2"> España </p>
+<p class="text-3xl md:text-4xl font-bold"> 2090 </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-5">
-<p class="text-lg text-gray-400 mb-2">Portugal</p>
-<p class="text-3xl md:text-4xl font-bold">2095</p>
+<p class="text-lg text-gray-400 mb-2"> Portugal </p>
+<p class="text-3xl md:text-4xl font-bold"> 2095 </p>
 </div>
 </div>
 <!-- CARD 2 - ORDER TYPES -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-4" data-reveal="">
-<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
-                    Tipos de pedido
-                </h2>
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300"> Tipos de pedido </h2>
 <div class="w-16 border-t-2 border-purple-400 mb-2"></div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">ZTAC</p>
-<p class="text-lg mt-1">Individual spare parts and DS orders</p>
+<p class="text-2xl font-bold text-purple-200"> ZTAC </p>
+<p class="text-lg mt-1"> Pedidos de piezas sueltas y DS </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">ZTA3</p>
-<p class="text-lg mt-1">Reclamaciones / Complaints</p>
+<p class="text-2xl font-bold text-purple-200"> ZTA3 </p>
+<p class="text-lg mt-1"> Reclamaciones </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">ZG2R</p>
-<p class="text-lg mt-1">Credit Note</p>
+<p class="text-2xl font-bold text-purple-200"> ZG2R </p>
+<p class="text-lg mt-1"> Abono </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">L2</p>
-<p class="text-lg mt-1">Invoice</p>
+<p class="text-2xl font-bold text-purple-200"> L2 </p>
+<p class="text-lg mt-1"> Factura </p>
 </div>
-</div>
+<div class="w-full bg-gray-800 rounded-xl p-4"><p class="text-2xl font-bold text-purple-200">ZTAI</p><p class="text-lg mt-1">Surtido regular, DS y piezas sueltas</p></div></div>
 <!-- CARD 3 - PAYMENT METHODS -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-4" data-reveal="">
-<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
-                    Métodos de pago
-                </h2>
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300"> Métodos de pago </h2>
 <div class="w-16 border-t-2 border-purple-400 mb-2"></div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">DE22</p>
-<p class="text-lg mt-1">Free of charge</p>
-<p class="text-sm text-gray-400">(Reclamaciones)</p>
+<p class="text-2xl font-bold text-purple-200"> DE22 </p>
+<p class="text-lg mt-1"> Gratuito </p>
+<p class="text-sm text-gray-400"> (Reclamaciones) </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">DE01</p>
-<p class="text-lg mt-1">Transferencia bancaria</p>
-<p class="text-sm text-gray-400">(Email orders)</p>
+<p class="text-2xl font-bold text-purple-200"> DE01 </p>
+<p class="text-lg mt-1"> Transferencia bancaria </p>
+<p class="text-sm text-gray-400"> (Pedidos por correo electrónico) </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">PBYL</p>
-<p class="text-lg mt-1">Pago mediante enlace</p>
-<p class="text-sm text-gray-400">(Email orders)</p>
+<p class="text-2xl font-bold text-purple-200"> PBYL </p>
+<p class="text-lg mt-1"> Pago mediante enlace </p>
+<p class="text-sm text-gray-400"> (Pedidos por correo electrónico) </p>
 </div>
 </div>
 </div>
 <!-- NAVIGATION -->
 <div class="flex justify-between p-6">
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-4">
-                ↑ Anterior
-            </a>
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-6">
-                Siguiente ↓
-            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-4"> ↑ Anterior </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-6"> Siguiente ↓ </a>
 </div>
 </section>
 <!-- SECTION 6 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-6">
 <!-- Heading -->
 <div class="text-center pt-8 pb-4 px-6 opacity-0 translate-y-5 transition-all duration-500 ease-out" data-reveal="">
-<h2 class="text-3xl font-bold tracking-wide">
-                Reclamaciones – proceso ZTA3
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Reclamaciones – proceso ZTA3 </h2>
 </div>
 <!-- Content -->
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-6">
 <div class="w-full max-w-5xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-8 flex flex-col justify-center gap-8 transition-all duration-300 opacity-0 translate-y-5" data-reveal="">
- Reclamaciones 
+<!-- Claims -->
 <div class="text-center">
-<h3 class="text-2xl font-bold text-emerald-400 mb-4">
-                        Reclamaciones
-                    </h3>
-<p class="text-xl text-gray-200 leading-relaxed">
-                        We receive an email reporting a missing or defective part.
-                    </p>
+<h3 class="text-2xl font-bold text-emerald-400 mb-4"> Reclamaciones </h3>
+<p class="text-xl text-gray-200 leading-relaxed"> Recibimos un correo que comunica una pieza faltante o defectuosa. </p>
 </div>
 <div class="border-t border-emerald-800"></div>
 <!-- Creating ZTA3 -->
 <div>
-<h3 class="text-2xl font-bold text-emerald-400 mb-6 text-center">
-                        Creating a ZTA3
-                    </h3>
+<h3 class="text-2xl font-bold text-emerald-400 mb-6 text-center"> Crear un ZTA3 </h3>
 <ul class="space-y-5 text-lg text-gray-200">
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">01.</span>
-<span>Check whether the customer already exists in the system or needs to be created.</span>
+<span class="text-emerald-400 font-bold"> 01. </span>
+<span> Comprueba si el cliente ya existe en el sistema o si es necesario crearlo. </span>
 </li>
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">02.</span>
-<span>Enter the ZTA3 order.</span>
+<span class="text-emerald-400 font-bold"> 02. </span>
+<span> Introduce el pedido ZTA3. </span>
 </li>
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">03.</span>
-<span>Note down and register the claim reference number.</span>
+<span class="text-emerald-400 font-bold"> 03. </span>
+<span> Anota y registra el número de incidencia. </span>
 </li>
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">04.</span>
-<span>Respond to the customer.</span>
+<span class="text-emerald-400 font-bold"> 04. </span>
+<span> Responde al cliente. </span>
 </li>
 </ul>
 </div>
@@ -354,732 +233,541 @@
 </div>
 <!-- Navigation -->
 <div class="flex justify-between items-center px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-5">
-                ← Anterior
-            </a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-7">
-                Siguiente →
-            </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-5"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-7"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 7 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-7">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Reclamaciones – comprobar clientes existentes
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Reclamaciones – comprobar clientes existentes </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<p class="text-xl text-pink-300 font-semibold text-center">
-                    Check whether the customer already exists in SAP.
-                </p>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP customer search process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-18.png" title="Haz clic para ampliar"/>
+<p class="text-xl text-pink-300 font-semibold text-center"> Comprueba si el cliente ya existe en SAP. </p>
+<img alt="Búsqueda de clientes en SAP" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-18.png" title="Pulsa para ampliar">
 <div class="text-center bg-gray-800 rounded-xl p-4">
-<p class="text-lg font-semibold text-pink-300">
-                        Importante
-                    </p>
-<p class="text-gray-200 text-lg">
-                        Note down the customer number to create the ZTA3 claim.
-                    </p>
+<p class="text-lg font-semibold text-pink-300"> Importante </p>
+<p class="text-gray-200 text-lg"> Anota el número de cliente para crear la reclamación ZTA3. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-6">
-                ← Anterior
-            </a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-8">
-                Siguiente →
-            </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-6"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-8"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 8 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-8">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Reclamaciones – crear un nuevo cliente
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Reclamaciones – crear un nuevo cliente </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <!-- SAP screenshots -->
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center mb-4">
-                    Cliente Creation in SAP
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP new customer creation" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-19.png" title="Haz clic para ampliar"/>
+<h3 class="text-xl font-bold text-purple-300 text-center mb-4"> Crear un cliente en SAP </h3>
+<img alt="Creación de un cliente en SAP" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-19.png" title="Pulsa para ampliar">
 </div>
 <!-- Required information -->
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center mb-5">
-                    Cliente Details
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center mb-5"> Datos del cliente </h3>
 <ul class="space-y-3 text-gray-200 text-base">
-<li>• Title (Mr./Mrs.)</li>
-<li>• Surname and first name</li>
-<li>• Street and address</li>
-<li>• Postal code and city</li>
-<li>• Country and region</li>
-<li>• Tax identification number (DNI/CIF)</li>
-<li>• Telephone number</li>
-<li>• Email address</li>
+<li> • Tratamiento (Sr./Sra.) </li>
+<li> • Apellidos y nombre </li>
+<li> • Calle y dirección </li>
+<li> • Código postal y población </li>
+<li> • País y región </li>
+<li> • Número de identificación fiscal (DNI/CIF) </li>
+<li> • Teléfono </li>
+<li> • Correo electrónico </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="font-bold text-purple-300 mb-2">
-                        Create Pedido
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Select <strong>ZTA3</strong> for claims or
-                        <strong>ZTAC</strong> for orders if you are
-                        going to create an order immediately afterwards.
-                    </p>
+<p class="font-bold text-purple-300 mb-2"> Crear pedido </p>
+<p class="text-gray-200 text-sm"> Selecciona <strong> ZTA3 </strong> para reclamaciones o <strong> ZTAC </strong> para pedidos si vas a crear uno a continuación. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-7">
-                ← Anterior
-            </a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-9">
-                Siguiente →
-            </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-7"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-9"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 9 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-9">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Reclamaciones – crear un ZTA3
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Reclamaciones – crear un ZTA3 </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Enter the ZTA3 order in SAP
-                </h3>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Introduce el pedido ZTA3 en SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTA3 order creation process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-20.png" title="Haz clic para ampliar"/>
+<img alt="Creación de una reclamación ZTA3 en SAP" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-20.png" title="Pulsa para ampliar">
 </div>
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="text-lg font-bold text-emerald-300">
-                        Importante – Step 5
-                    </p>
-<p class="text-gray-200 text-lg">
-                        Note down the claim reference number after saving the ZTA3.
-                    </p>
+<p class="text-lg font-bold text-emerald-300"> Importante – paso 5 </p>
+<p class="text-gray-200 text-lg"> Anota el número de incidencia después de grabar el ZTA3. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-8">
-                ← Anterior
-            </a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-10">
-                Siguiente →
-            </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-8"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-10"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 10 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-10">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Reclamaciones – registrar y responder
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Reclamaciones – registrar y responder </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <!-- Screenshot -->
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
-                    Register the Claim
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="Claim tracking spreadsheet and customer email example" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-21.png" title="Haz clic para ampliar"/>
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4"> Registrar la reclamación </h3>
+<img alt="Registro de reclamaciones y ejemplo de respuesta" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-21.png" title="Pulsa para ampliar">
 </div>
 <!-- Reply -->
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
-                    Reply to the Cliente
-                </h3>
-<p class="text-gray-200 text-base mb-4">
-                    Make sure the claim is registered and the customer receives
-                    a clear update.
-                </p>
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4"> Responder al cliente </h3>
+<p class="text-gray-200 text-base mb-4"> Registra la reclamación y comunica al cliente el estado de su solicitud de forma clara. </p>
 <ul class="space-y-3 text-gray-200 text-base">
-<li>• Record the claim reference number.</li>
-<li>• Confirm that the request has been received.</li>
-<li>• Inform the customer that the replacement parts have been requested from Germany.</li>
-<li>• Provide the claim reference number.</li>
-<li>• Explain that delivery may take a few weeks.</li>
-<li>• Ask the customer to contact us again if the parts have not arrived within approximately 20 working days.</li>
+<li> • Registra el número de incidencia. </li>
+<li> • Confirma la recepción de la solicitud. </li>
+<li> • Informa al cliente de que las piezas de repuesto se han solicitado a Alemania. </li>
+<li> • Facilita el número de incidencia. </li>
+<li> • Explica que la entrega puede tardar unas semanas. </li>
+<li> • Pide al cliente que vuelva a contactar si las piezas no llegan en aproximadamente 20 días hábiles. </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="text-pink-300 font-bold mb-1">
-                        Importante
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Ask customers not to send duplicate emails, as this may delay claim processing.
-                    </p>
+<p class="text-pink-300 font-bold mb-1"> Importante </p>
+<p class="text-gray-200 text-sm"> Pide al cliente que indique el número de incidencia cuando vuelva a contactar. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-9">
-                ← Anterior
-            </a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-11">
-                Siguiente →
-            </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-9"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-11"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 11 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-11">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Pedidos por email – crear un ZTAC
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Pedidos por correo electrónico – crear un ZTAC </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center mb-4">
-                    Pedido Processing
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center mb-4"> Tramitación del pedido </h3>
 <ul class="space-y-4 text-gray-200 text-lg">
-<li>01. Check whether the customer already exists or needs to be created.</li>
-<li>02. Enter the ZTAC order in SAP.</li>
-<li>03. Send the quotation to the customer.</li>
+<li> 01. Comprueba si el cliente ya existe o si hay que crearlo. </li>
+<li> 02. Introduce el pedido ZTAC en SAP. </li>
+<li> 03. Envía el presupuesto al cliente. </li>
 </ul>
 </div>
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-4 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="Customer email with requested products" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-22.png" title="Haz clic para ampliar"/>
+<img alt="Correo de un cliente con productos solicitados" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-22.png" title="Pulsa para ampliar">
 </div>
 </div>
 <div class="px-8 pb-5">
 <div class="bg-gray-900 rounded-xl p-4 text-center">
-<p class="font-bold text-purple-300 mb-2">Email Pedido Restrictions</p>
-<p class="text-gray-200 text-base">
-                    Maximum 40 different product references and 20 units of the same reference per order.
-                </p>
+<p class="font-bold text-purple-300 mb-2"> Restricciones de los pedidos por correo electrónico </p>
+<p class="text-gray-200 text-base"> Máximo de 40 referencias distintas y 20 unidades de una misma referencia por pedido. No se aplican promociones. </p>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-10">← Anterior</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-12">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-10"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-12"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 12 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-12">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Pedidos por email – comprobar clientes existentes
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Pedidos por correo electrónico – comprobar clientes existentes </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Check whether the customer already exists in SAP.
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP customer search process for ZTAC" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-23.png" title="Haz clic para ampliar"/>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Comprueba si el cliente ya existe en SAP. </h3>
+<img alt="Búsqueda de clientes para un pedido ZTAC" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-23.png" title="Pulsa para ampliar">
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="font-bold text-emerald-300 text-lg mb-1">
-                        Importante
-                    </p>
-<p class="text-gray-200 text-lg">
-                        Note down the customer number to create the ZTAC order.
-                    </p>
+<p class="font-bold text-emerald-300 text-lg mb-1"> Importante </p>
+<p class="text-gray-200 text-lg"> Anota el número de cliente para crear el pedido ZTAC. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-11">← Anterior</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-13">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-11"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-13"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 13 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-13">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Pedidos por email – crear un nuevo cliente
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Pedidos por correo electrónico – crear un nuevo cliente </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-4 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP new customer creation form" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-24.png" title="Haz clic para ampliar"/>
+<img alt="Formulario de creación de clientes en SAP" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-24.png" title="Pulsa para ampliar">
 </div>
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
-                    Required Cliente Details
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4"> Datos necesarios del cliente </h3>
 <ul class="space-y-2 text-gray-200 text-base">
-<li>• Title (Mr./Mrs.)</li>
-<li>• Surname and first name</li>
-<li>• Street and address</li>
-<li>• Postal code and city</li>
-<li>• Country and region</li>
-<li>• Tax identification number (DNI/CIF)</li>
-<li>• Telephone number</li>
-<li>• Email address</li>
+<li> • Tratamiento (Sr./Sra.) </li>
+<li> • Apellidos y nombre </li>
+<li> • Calle y dirección </li>
+<li> • Código postal y población </li>
+<li> • País y región </li>
+<li> • Número de identificación fiscal (DNI/CIF) </li>
+<li> • Teléfono </li>
+<li> • Correo electrónico </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="font-bold text-pink-300 mb-2">
-                        Create Pedido
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Select <strong>ZTAC</strong> for orders or
-                        <strong>ZTA3</strong> for claims if you are
-                        creating an order immediately afterwards.
-                    </p>
+<p class="font-bold text-pink-300 mb-2"> Crear pedido </p>
+<p class="text-gray-200 text-sm"> Selecciona <strong> ZTAC </strong> para pedidos o <strong> ZTA3 </strong> para reclamaciones si vas a crearlas a continuación. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-12">← Anterior</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-14">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-12"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-14"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 14 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-14">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Introducir el pedido ZTAC – pasos 1–5
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Introducir el pedido ZTAC – pasos 1–5 </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center">
-                    Follow the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center"> Sigue los pasos numerados en SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTAC order entry steps 1 to 5" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-25.png" title="Haz clic para ampliar"/>
+<img alt="Introducción de ZTAC en SAP, pasos 1–5" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-25.png" title="Pulsa para ampliar">
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-13">← Anterior</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-15">Siguiente →</a>
+<p class="text-sm text-gray-200 px-8 pb-4">Introduce ZTAC, organización de ventas 2090 (España) o 2095 (Portugal), canal 01 y sector 01. Completa cliente, condiciones de pago, motivo, materiales y cantidades. Antes de grabar, selecciona Tratar → Modificación rápida → Motivo de Rechazo → Operación por aclarar para evitar un envío sin pago.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-13"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-15"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 15 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-15">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Introducir el pedido ZTAC – pasos 6–9
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Introducir el pedido ZTAC – pasos 6–9 </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Continue following the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Continúa con los pasos numerados en SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTAC order entry steps 6 to 9" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-26.png" title="Haz clic para ampliar"/>
+<img alt="Introducción de ZTAC en SAP, pasos 6–9" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-26.png" title="Pulsa para ampliar">
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-14">← Anterior</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-16">Siguiente →</a>
+<p class="text-sm text-gray-200 px-8 pb-4">Tras grabar, anota el número de pedido. Abre Detalles → Mensajes → Cabecera → Tratar, configura Datos Adicionales y Medios de comunicación como se muestra y graba para recibir el PDF del presupuesto. Envíalo con los Términos y Condiciones.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-14"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-16"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 16 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-16">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Enviar la oferta al cliente
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Enviar el presupuesto al cliente </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center">
-                    Quotation + Terms &amp; Conditions
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 text-center"> Presupuesto + Términos y Condiciones </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="Customer email and order quotation with Terms and Conditions" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-27.png" title="Haz clic para ampliar"/>
+<img alt="Correo de presupuesto con Términos y Condiciones" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-27.png" title="Pulsa para ampliar">
 </div>
-<p class="text-center text-gray-200 text-lg">
-                    Send the quotation and the Terms &amp; Conditions to the customer.
-                </p>
+<p class="text-center text-gray-200 text-lg"> Envía al cliente el presupuesto y los Términos y Condiciones. </p>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-15">← Anterior</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-17">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-15"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-17"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 17 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-17">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                El cliente acepta la oferta – pago
-            </h2>
-<p class="text-gray-300 mt-2">The customer can complete the purchase using one of two payment methods.</p>
+<h2 class="text-3xl font-bold tracking-wide"> El cliente acepta el presupuesto – pago </h2>
+<p class="text-gray-300 mt-2"> El cliente puede completar la compra con uno de estos dos métodos de pago. </p>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-purple-300 text-center mb-5">
-                    Bank Transfer
-                </h3>
+<h3 class="text-2xl font-bold text-purple-300 text-center mb-5"> Transferencia bancaria </h3>
 <ul class="space-y-4 text-gray-200 text-base">
-<li>• Email the customer with the bank account details, quotation and Terms &amp; Conditions.</li>
-<li>• Inform Anabel García at <strong>anabel_garcia@Playmobil.de</strong> about the expected payment.</li>
-<li>• Include the order number, customer number and amount to be paid.</li>
-<li>• Once payment is received, Anabel will confirm it by email.</li>
-<li>• Only then can you remove <strong>OPERATION TO BE CLARIFIED</strong> so the order can be dispatched.</li>
+<li> • Envía al cliente los datos bancarios aprobados, el presupuesto y los Términos y Condiciones. </li>
+<li> • Informa a <strong> Contabilidad </strong> del ingreso previsto. </li>
+<li> • Incluye el número de pedido, el número de cliente y el importe. </li>
+<li> • Contabilidad confirmará por correo la recepción del ingreso. </li>
+<li> • Solo entonces se puede quitar <strong> Operación por aclarar </strong> para que se envíe el pedido. </li>
 </ul>
 </div>
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-purple-300 text-center mb-5">
-                    Payment by Link
-                </h3>
+<h3 class="text-2xl font-bold text-purple-300 text-center mb-5"> Pago mediante enlace </h3>
 <ul class="space-y-5 text-gray-200 text-base">
-<li>• Modify the payment terms of the order.</li>
-<li>• Inform the customer that the payment link is valid for <strong>24 hours</strong>.</li>
-<li>• Inform Anabel García at <strong>anabel_garcia@Playmobil.de</strong> once the payment has been made.</li>
-<li>• Include the order number, customer number and payment amount.</li>
+<li> • Cambia la condición de pago del pedido a PBYL. </li>
+<li> • Informa al cliente de que el enlace de pago tiene una validez de <strong> 24 horas </strong> . </li>
+<li> • Informa a <strong> Contabilidad </strong> cuando se haya realizado el pago. </li>
+<li> • Incluye el número de pedido, el número de cliente y el importe pagado. </li>
 </ul>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-16">← Anterior</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-18">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-16"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-18"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 18 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-18">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Modificar / consultar pedidos y reclamaciones
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Modificar / visualizar pedidos y reclamaciones </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP order modification and viewing process" class="w-full max-h-[350px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-29.png" title="Haz clic para ampliar"/>
-<p class="text-gray-200 text-center text-lg">
-                    Use this process to modify quantities or remove items from an existing order.
-                </p>
+<img alt="Modificación de pedidos en SAP" class="w-full max-h-[350px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-29.png" title="Pulsa para ampliar">
+<p class="text-gray-200 text-center text-lg"> Este proceso permite modificar cantidades o eliminar artículos de un pedido manual pendiente de pago. </p>
 <div class="bg-gray-800 rounded-xl p-4">
-<p class="text-emerald-300 font-bold text-center text-lg mb-2">
-                        Importante – OPERATION TO BE CLARIFIED
-                    </p>
-<p class="text-gray-200 text-center">
-                        After making changes, set the order back to
-                        <strong>OPERATION TO BE CLARIFIED</strong>.
-                    </p>
-<p class="text-red-300 text-center font-semibold mt-3">
-                        If this status is not applied, the order will be invoiced and dispatched.
-                    </p>
-<p class="text-gray-300 text-center text-sm mt-2">
-                        Only remove this status once Anabel García confirms the payment or the customer has paid by link.
-                    </p>
+<p class="text-emerald-300 font-bold text-center text-lg mb-2"> Importante – Operación por aclarar </p>
+<p class="text-gray-200 text-center"> Después de realizar cambios, vuelve a establecer <strong> Operación por aclarar </strong> . </p>
+<p class="text-red-300 text-center font-semibold mt-3"> Si no se establece este bloqueo, el pedido se facturará y se enviará. </p>
+<p class="text-gray-300 text-center text-sm mt-2"> Para transferencias, quita el bloqueo solo tras la confirmación de Contabilidad. Con PBYL, la validación es automática: no lo quites manualmente. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-17">← Anterior</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-19">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-17"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-19"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 19 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-19">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Pago mediante enlace – proceso SAP
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Pago mediante enlace – proceso SAP </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center">
-                    Automatic Payment Email
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP payment link process and automatic payment email" class="w-full max-h-[380px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-30.png" title="Haz clic para ampliar"/>
+<h3 class="text-xl font-bold text-pink-300 text-center"> Correo de pago automático </h3>
+<img alt="Procedimiento de enlace de pago en SAP" class="w-full max-h-[380px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-30.png" title="Pulsa para ampliar">
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="text-pink-300 font-bold text-lg mb-2">
-                        Importante
-                    </p>
-<p class="text-gray-200 text-lg">
-                        When you save the changes, SAP automatically sends an email to the customer requesting payment.
-                    </p>
-<p class="text-gray-200 mt-2">
-                        The order is validated automatically. <strong>Do not remove OPERATION TO BE CLARIFIED.</strong>
+<p class="text-pink-300 font-bold text-lg mb-2"> Importante </p>
+<p class="text-gray-200 text-lg"> Al grabar los cambios, SAP envía automáticamente un correo al cliente para solicitar el pago. </p>
+<p class="text-gray-200 mt-2"> El pedido se valida automáticamente con el pago mediante enlace. <strong> No quites manualmente Operación por aclarar. </strong>
 </p>
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-18">← Anterior</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-20">Siguiente →</a>
+<p class="text-sm text-gray-200 px-8 pb-4">Antes de validar, cambia Condición de pago de DE01 a PBYL. Abre Detalles → Cabecera → Tratar, selecciona el último mensaje, pulsa Repetir mensaje, revisa Medios de Comunicación y Dar salida, vuelve y graba.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-18"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-20"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 20 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-20">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Cómo responder a los clientes
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Cómo responder a los clientes </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-5xl bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-8 flex flex-col justify-center gap-6 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">01.</span>
-<p class="text-gray-200 text-lg">
-                        Use existing email templates from the
-                        <strong>Playmobil Ibérica Cliente Service Manual</strong>.
-                    </p>
+<span class="text-purple-300 font-bold text-2xl"> 01. </span>
+<p class="text-gray-200 text-lg"> Utiliza las plantillas del <strong> Manual Atención al Cliente de Playmobil Ibérica </strong> . </p>
 </div>
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">02.</span>
-<p class="text-gray-200 text-lg">
-                        If no template is available or the case is specific, personalize your response.
-                    </p>
+<span class="text-purple-300 font-bold text-2xl"> 02. </span>
+<p class="text-gray-200 text-lg"> Si no existe una plantilla o el caso es específico, personaliza la respuesta. </p>
 </div>
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">03.</span>
-<div class="text-gray-200 text-lg">
-                        If there is a problem involving accidents, dangerous situations, missing parts or items that cannot be entered into SAP, report it to:
-
-                        <p class="text-purple-300 font-semibold mt-2">
-                            María Gómez
-                        </p>
-<p class="text-base">
-                            maria_gomez@playmobil.de
-                        </p>
+<span class="text-purple-300 font-bold text-2xl"> 03. </span>
+<div class="text-gray-200 text-lg"> Comunica los accidentes, las situaciones de peligro y los problemas con piezas no encontradas o que no se pueden introducir en SAP al responsable de SAC: <p class="text-purple-300 font-semibold mt-2"> Responsable de SAC </p>
+<p class="text-base"> Consulta el directorio interno aprobado. </p>
 </div>
 </div>
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">04.</span>
-<p class="text-gray-200 text-lg">
-                        Once an email has been resolved, move it to the <strong>Sent</strong> folder.
-                    </p>
+<span class="text-purple-300 font-bold text-2xl"> 04. </span>
+<p class="text-gray-200 text-lg"> Cuando hayas resuelto un correo, muévelo a la carpeta <strong> Enviado </strong> . </p>
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-19">← Anterior</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-21">Siguiente →</a>
+<p class="text-base text-gray-200 px-8 pb-4">Utiliza un tono profesional, amable y cercano. Dirígete al cliente de tú y firma como Tu equipo PLAYMOBIL.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-19"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-21"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 21 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-21">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Incidencias de transporte
-            </h2>
-<p class="text-gray-300 mt-2">
-                Lost or undelivered parcels, delivery delays, address changes and cancellations
-            </p>
+<h2 class="text-3xl font-bold tracking-wide"> Incidencias de transporte </h2>
+<p class="text-gray-300 mt-2"> Paquetes perdidos o no entregados, retrasos, cambios de dirección y cancelaciones </p>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-3 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">DHL</h3>
-<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
-<p class="text-gray-200 text-sm break-words">clientesparcel.spain@dhl.com</p>
-<p class="text-gray-200 text-sm break-words mb-5">complaints.dhl@dhl.com</p>
-<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
-<p class="text-gray-200 text-lg">+34 910 783 066</p>
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5"> DHL </h3>
+<p class="text-gray-400 text-sm font-semibold mb-2"> CORREO ELECTRÓNICO </p>
+<p class="text-gray-200 text-sm break-words"> clientesparcel.spain@dhl.com </p>
+<p class="text-gray-200 text-sm break-words mb-5"> complaints.dhl@dhl.com </p>
+<p class="text-gray-400 text-sm font-semibold mb-2"> TELÉFONO </p>
+<p class="text-gray-200 text-lg"> +34 910 783 066 </p>
 </div>
 <div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">CTT / Correos</h3>
-<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
-<p class="text-gray-200 text-sm break-words mb-5">correos@correos.com</p>
-<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
-<p class="text-gray-200 text-lg">+34 624 072 366</p>
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5"> CTT / Correos </h3>
+<p class="text-gray-400 text-sm font-semibold mb-2"> CORREO ELECTRÓNICO </p>
+<p class="text-gray-200 text-sm break-words mb-5"> correos@correos.com </p>
+<p class="text-gray-400 text-sm font-semibold mb-2"> TELÉFONO </p>
+<p class="text-gray-200 text-lg"> +34 624 072 366 </p>
 </div>
 <div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">UPS</h3>
-<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
-<p class="text-gray-200 text-sm break-words">preferredes@ups.com</p>
-<p class="text-gray-200 text-sm break-words">preferredde@ups.com</p>
-<p class="text-gray-200 text-sm break-words mb-5">custsvceses@ups.com</p>
-<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
-<p class="text-gray-200 text-lg">+34 902 88 88 40</p>
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5"> UPS </h3>
+<p class="text-gray-400 text-sm font-semibold mb-2"> CORREO ELECTRÓNICO </p>
+<p class="text-gray-200 text-sm break-words"> preferredes@ups.com </p>
+<p class="text-gray-200 text-sm break-words"> preferredde@ups.com </p>
+<p class="text-gray-200 text-sm break-words mb-5"> custsvceses@ups.com </p>
+<p class="text-gray-400 text-sm font-semibold mb-2"> TELÉFONO </p>
+<p class="text-gray-200 text-lg"> +34 902 88 88 40 </p>
 </div>
 </div>
 <div class="px-8 pb-5">
 <div class="bg-gray-900 rounded-xl p-4 text-center">
-<p class="text-emerald-300 font-bold mb-2">Importante Notes</p>
-<p class="text-gray-200 text-sm">
-                    Address changes are not guaranteed. You can email the carrier to request a change, but it cannot be guaranteed.
-                </p>
-<p class="text-gray-200 text-sm mt-2">
-                    Cancellation deadline: 14 working days from the date the goods arrive at our facilities.
-                </p>
+<p class="text-emerald-300 font-bold mb-2"> Notas importantes </p>
+<p class="text-gray-200 text-sm"> No se modifica una dirección confirmada. Se puede trasladar la solicitud al transportista, sin garantizar el cambio. </p>
+<p class="text-gray-200 text-sm mt-2"> Los documentos discrepan sobre el plazo de cancelación. Consulta los Términos y Condiciones aprobados y al responsable de SAC. </p>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-20">← Anterior</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-22">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-20"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-22"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 22 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-22">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Devoluciones y reembolsos
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Devoluciones y reembolsos </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 mb-5">
-                    Reasons for Return
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 mb-5"> Motivos de devolución </h3>
 <div class="space-y-5 text-gray-200 text-lg">
-<p><span class="text-pink-300 font-bold">01.</span> Cliente error when placing the order or change of mind.</p>
-<p><span class="text-pink-300 font-bold">02.</span> Error during order preparation.</p>
-<p><span class="text-pink-300 font-bold">03.</span> Cliente receives a damaged parcel.</p>
+<p><span class="text-pink-300 font-bold"> 01. </span> Error del cliente al realizar el pedido o cambio de opinión. </p>
+<p><span class="text-pink-300 font-bold"> 02. </span> Error en la preparación del pedido. </p>
+<p><span class="text-pink-300 font-bold"> 03. </span> El cliente recibe un paquete dañado. </p>
 </div>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="text-pink-300 font-bold mb-2">Return Form</p>
-<a class="text-blue-300 underline break-words" href="https://www.playmobil.com/es-es/devolucion/" target="_blank">
-                        PLAYMOBIL Returns Page
-                    </a>
+<p class="text-pink-300 font-bold mb-2"> Formulario de devolución </p>
+<a class="text-blue-300 underline break-words" href="https://www.playmobil.com/es-es/devolucion/" target="_blank" rel="noopener noreferrer"> Página de devoluciones de PLAYMOBIL </a>
 </div>
 </div>
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 mb-5">
-                    Return Conditions
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 mb-5"> Condiciones de devolución </h3>
 <ul class="space-y-4 text-gray-200 text-base">
-<li>• Return costs are covered by the customer.</li>
-<li>• If the order arrives damaged and the damage is reported at the time of delivery (as stated on the delivery receipt), PLAYMOBIL IBÉRICA covers the return costs.</li>
-<li>• The customer has <strong>14 working days</strong> to cancel the order.</li>
-<li>• Refunds are processed within <strong>14 working days</strong> from the date the goods arrive at our facilities.</li>
+<li> • Los gastos de devolución los asume el cliente. </li>
+<li> • Si el daño se notificó en el momento de la entrega y consta en el justificante, PLAYMOBIL IBÉRICA asume los gastos de devolución. </li>
+<li> • Plazo de desistimiento: <strong></strong> Consulta los Términos y Condiciones aprobados; las fuentes discrepan. </li>
+<li> • Según la formación, los reembolsos se tramitan en <strong> 14 días hábiles </strong> desde la llegada de la mercancía a nuestras instalaciones. </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="text-pink-300 font-bold mb-1">Importante</p>
-<p class="text-gray-200 text-sm">
-                        Contact MRW for collections paid for by PLAYMOBIL IBÉRICA.
-                    </p>
+<p class="text-pink-300 font-bold mb-1"> Importante </p>
+<p class="text-gray-200 text-sm"> Contacta con MRW para las recogidas que paga PLAYMOBIL IBÉRICA. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-21">← Anterior</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-23">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-21"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-23"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 23 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-23">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                ZG2R – abono (pasos 1–4)
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> ZG2R – abono (pasos 1–4) </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center">
-                    Follow the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center"> Sigue los pasos numerados en SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZG2R credit note creation steps 1 to 4" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-34.png" title="Haz clic para ampliar"/>
+<img alt="Abono ZG2R en SAP, pasos 1–4" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-34.png" title="Pulsa para ampliar">
 </div>
 <div class="bg-gray-800 rounded-xl p-3 text-center">
-<p class="text-purple-300 font-bold">
-                        Importante: Note down the document number.
-                    </p>
+<p class="text-purple-300 font-bold"> Importante: anota el número de documento. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-22">← Anterior</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-24">Siguiente →</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-22"> ← Anterior </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-24"> Siguiente → </a>
 </div>
 </section>
 <!-- SECTION 24 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-24">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                ZG2R – abono (pasos 5–8)
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> ZG2R – abono (pasos 5–8) </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Continue following the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Continúa con los pasos numerados en SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZG2R credit note creation steps 5 to 8" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-35.png" title="Haz clic para ampliar"/>
+<img alt="Abono ZG2R en SAP, pasos 5–8" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-35.png" title="Pulsa para ampliar">
 </div>
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="text-emerald-300 font-bold mb-2">
-                        After Creating the Credit Note
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Note down the document number and inform
-                        <strong>anabel_garcia@playmobil.de</strong> about the credit note.
-                    </p>
-<p class="text-gray-300 text-sm mt-2">
-                        If you have any doubts, contact
-                        <strong>maria_gomez@playmobil.de</strong>.
-                    </p>
+<p class="text-emerald-300 font-bold mb-2"> Después de crear el abono </p>
+<p class="text-gray-200 text-sm"> Anota el número de documento e informa a <strong> Contabilidad </strong> del abono. </p>
+<p class="text-gray-300 text-sm mt-2"> En caso de duda, consulta al responsable de SAC. <strong> Consulta el directorio interno aprobado. </strong> . </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-23">← Anterior</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-23"> ← Anterior </a>
 
-</div>
+<a href="#section-25" class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition">Siguiente →</a></div>
 </section>
 <!-- SECTION 25 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-25">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Seguimiento de envíos en SAP
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Seguimiento de envíos en SAP </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center">
-                    Checking Shipment Status
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 text-center"> Consultar el estado del envío </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP shipment tracking and carrier tracking process" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-36.png" title="Haz clic para ampliar"/>
+<img alt="Consulta de envíos y seguimiento del transportista en SAP" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-36.png" title="Pulsa para ampliar">
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-24">← Anterior</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-24"> ← Anterior </a>
 
-<a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26">Siguiente →</a></div>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26"> Siguiente → </a></div>
 </section>
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-26">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Tareas diarias – llamadas y emails</h1></div>
-<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Atención telefónica y por email</h2><p class="text-lg">Hay que responder las consultas telefónicas y por email de forma educada y eficiente, resolviendo las dudas del cliente.</p><p class="text-lg mt-4">Conocer la web <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener" target="_blank">www.playmobil.es</a> thoroughly and visit it regularly to stay up to date with promotions and new products.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Qué debemos consultar en la web</h2><p class="text-lg">En el banner principal de la página de inicio podemos consultar la promoción principal y otras novedades.</p><p class="text-lg mt-4">Es fundamental conocer las condiciones de las promociones, ya que generan muchas consultas de los clientes.</p><p class="text-lg mt-4">Las consultas pueden tratar sobre la entrega de pedidos, productos, promociones, piezas sueltas o devoluciones. Estos temas se detallan a lo largo de la formación.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-25">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-27">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Promociones y consultas telefónicas</h1></div>
-<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3">Normalmente, las promociones no son compatibles con</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Piezas sueltas o piezas de repuesto – <a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/piezas-sueltas-manuales-de-instrucciones/" rel="noopener" target="_blank">spare parts and instructions</a></li><li>Otras promociones y códigos de descuento</li><li><a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/resultado-de-la-busqueda/?q=packs+promocionales" rel="noopener" target="_blank">Packs promocionales</a></li><li>Novedades (productos lanzados al mercado en los últimos dos meses)</li></ul></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3">Qué no podemos hacer por teléfono</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Solicitar datos personales para tramitar un pedido o una reclamación. El cliente debe utilizar <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener" target="_blank">the website</a> or email <a class="text-sky-300 underline" href="mailto:clientes@playmobil.de">clientes@playmobil.de</a>.</li><li>Dar precios de los productos. Hay que dirigir al cliente a la web.</li><li>Dar referencias de piezas sueltas. Hay que pedir al cliente que nos envíe un email o remitirlo al apartado de manuales de montaje de la web.</li></ul><p class="text-amber-300 font-semibold mt-4">Este tipo de consultas se resuelven siempre por email.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-28">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Información esencial para el SAC</h1></div>
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Plazos de entrega</h2><p>Pedidos normales: <b>6–8 working days</b>.</p><p class="mt-2">Pedidos de piezas sueltas: hasta <b>10 weeks</b>.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Métodos de pago</h2><p>Web: tarjeta de crédito y PayPal.</p><p class="mt-2">Pedidos por email: transferencia bancaria o tarjeta de crédito.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Devoluciones y modificaciones</h2><p>Devoluciones: <b>14 working days</b> desde la recepción de la mercancía.</p><p class="mt-2">No es posible modificar los pedidos confirmados ni las direcciones una vez confirmada la compra.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Gastos de envío</h2><p>Península y Baleares: <b>€9</b>; gratis a partir de €60.</p><p class="mt-2">Canarias, Ceuta y Melilla: <b>€22</b>; gratis a partir de €150.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Pedidos por email</h2><p>Los pedidos realizados por email no tienen ninguna promoción.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Piezas individuales de una figura</h2><p>No es posible pedir piezas sueltas de una misma figura, como pelucas, barbas, brazos, etc.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-29">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">B) Estadísticas SAC</h1></div>
-<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 shadow-lg w-full" data-reveal=""><p class="text-xl mb-5">Todos los días controlamos los emails recibidos. Para ello, abrimos la siguiente carpeta:</p><p class="text-xl font-bold text-sky-300 mb-7 break-all">P:\ATENCION_AL_CLIENTE\ESTADISTICAS EMAIL SAC</p><div class="grid md:grid-cols-3 gap-4"><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Emails buzón</h2><p>Indicamos el número total de emails que vemos en el buzón, sin abrirlos, a primera hora de la mañana.</p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Emails recibidos</h2><p>Indicamos el número de emails recibidos durante el día anterior, realizando la búsqueda correspondiente en Outlook.</p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Pedidos y reclamaciones</h2><p>Después de leer y clasificar todos los emails, anotamos cuántos corresponden a pedidos y reclamaciones.</p></div></div></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-30">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">C) Consulta de pedidos bloqueados en SAP</h1></div>
-<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Primera búsqueda – VA14L</h2><p class="text-lg">Utilizamos la transacción SAP <b class="text-sky-300">VA14L</b> para comprobar si hay pedidos bloqueados por alto importe en España y Portugal.</p><p class="mt-4">En el apartado <b>Bloqueo de entrega cabecera</b>, realizamos la primera búsqueda con:</p><ul class="list-disc pl-6 mt-2 space-y-2 text-lg"><li>Plazos de entrega block: <b>Z1</b></li><li>Organización de ventas: <b>2090</b> (España)</li><li>Canal de distribución: <b>01</b></li><li>Sector: <b>01</b></li></ul><p class="mt-4">Pulsamos el icono del reloj para consultar si hay pedidos bloqueados.</p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Cómo eliminar el bloqueo</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Abrimos el pedido haciendo clic en su número en la tabla de resultados.</li><li>In <b>Plazos de entrega block</b>, quitamos la opción <b>Amount check</b> y guardamos.</li><li>Guardamos el pedido.</li><li>Cerramos el pedido, volvemos a la página de inicio y pulsamos el botón verde para guardar.</li></ol><p class="mt-4 text-amber-300 font-semibold">Repetimos también la búsqueda con Z0, además de Z1.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-31">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">C) Pedidos bloqueados – consulta de Portugal</h1></div>
-<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 w-full" data-reveal=""><h2 class="text-2xl font-bold mb-5">Repetimos las mismas comprobaciones para Portugal</h2><p class="text-lg mb-6">Realizamos las dos búsquedas de bloqueo de entrega con la organización de ventas de Portugal:</p><div class="grid md:grid-cols-2 gap-4"><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300">España</p><p class="text-3xl font-bold mt-2">2090</p><p class="mt-3">Z1 and Z0</p></div><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300">Portugal</p><p class="text-3xl font-bold mt-2">2095</p><p class="mt-3">Z1 and Z0</p></div></div><p class="text-xl font-bold text-emerald-300 mt-7">Resumen: 2090 – Z1 and Z0; 2095 – Z1 and Z0.</p><p class="text-gray-300 mt-3">En cada búsqueda, pulsamos el reloj, revisamos los resultados y eliminamos el bloqueo si es necesario.</p></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-32">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">D) Emails de contabilidad – clientes bloqueados</h1></div>
-<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Informes diarios de contabilidad</h2><p class="text-lg">Todos los días recibimos emails automáticos con informes de contabilidad. Solo debemos actuar sobre dos de ellos:</p><ul class="list-disc pl-6 mt-4 space-y-3 text-lg"><li>Clientes que debemos bloquear por haber introducido datos falsos o incorrectos en sus pedidos, incumpliendo los Términos y Condiciones.</li><li>Informes de cancelaciones y abonos devueltos a Alemania.</li></ul><p class="mt-4">El resto de informes se archivan en la carpeta de Contabilidad de Outlook.</p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Bloqueo de clientes</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Abrimos el email del informe y revisamos el PDF adjunto con la lista de clientes que debemos bloquear.</li><li>Si aparece el mensaje <b>“Error en el bloque de la Contraparte”</b> hay que enviar un email a Contabilidad a <a class="text-sky-300 underline" href="mailto:anabel_garcia@playmobil.de">anabel_garcia@playmobil.de</a> para que procedan a bloquear a los clientes.</li><li>Enviamos un email a los clientes afectados para informarles de que sus cuentas están deshabilitadas.</li><li>Dejamos el email enviado el día anterior en la carpeta de Contabilidad marcado como no leído. Lo reenviamos con todos los clientes y SAC en copia oculta para localizarlo fácilmente al día siguiente.</li></ol></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-33">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">D) Informes de cancelaciones y abonos</h1></div>
-<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Comprobar la cancelación</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Abrimos el informe de cancelaciones y abonos enviado por Alemania.</li><li>En SAP, ejecutamos la transacción <b>VA05</b> con el número de cliente.</li><li>Ampliamos el periodo de búsqueda a los dos meses anteriores.</li><li>Comprobamos si el cliente tiene el pedido <b>ZTAI</b> correspondiente y la devolución <b>RE</b> realizada por Alemania.</li></ol></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Qué debemos comunicar a Contabilidad</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Si el pedido ZTAI y la devolución RE son correctos, reenviamos el informe a Contabilidad para que realice el abono.</li><li>Si existe un <b>ZTA3</b> con el mismo contenido que el pedido, el abono no sería correcto porque ya hemos enviado la mercancía gratuitamente.</li><li>Si hemos creado una reclamación y enviado la mercancía, indicamos a Contabilidad que no debe abonar al cliente <b>noXXXX</b>; ya que emitiremos una factura <b>L2</b> para compensar la cuenta.</li></ul><p class="mt-4 text-amber-300">Para el proceso L2, consultar <b>J) Rectificación abonos – Facturas L2</b> y anotarlo en <b>MARKETING\ABONOS CONTABILIDAD_01</b>.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-34">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Prioridades SAC – periodo de Navidad</h1></div>
-<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal="">Prioridades generales: ofrecer soluciones rápidas y de calidad; informar sobre el estado de los envíos para garantizar las entregas y evitar incidencias; y garantizar el servicio posventa.</p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-2">Noviembre – enero</h2><p class="text-gray-300 mb-5">Durante el periodo navideño, las prioridades son:</p><div class="grid md:grid-cols-3 gap-4"><div class="bg-rose-950/60 rounded-xl p-5"><p class="text-sm uppercase">Prioridad 1</p><h3 class="text-xl font-bold mt-2">Pedidos y entregas</h3><p class="mt-2">Consultas sobre pedidos y entregas, números de seguimiento, promociones y ofertas.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioridad 2</p><h3 class="text-xl font-bold mt-2">Servicio posventa</h3><p class="mt-2">Piezas faltantes o defectuosas, pedidos de piezas de recambio y devoluciones.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioridad 3</p><h3 class="text-xl font-bold mt-2">Otras solicitudes</h3><p class="mt-2">Todas las demás solicitudes.</p></div></div></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-35">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-35">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Prioridades SAC – resto del año</h1></div>
-<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal="">De febrero a octubre, el servicio posventa pasa a ser la prioridad principal.</p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-5">Febrero – octubre</h2><div class="grid md:grid-cols-3 gap-4"><div class="bg-emerald-950/60 rounded-xl p-5"><p class="text-sm uppercase">Prioridad 1</p><h3 class="text-xl font-bold mt-2">Servicio posventa</h3><p class="mt-2">Piezas faltantes o defectuosas, pedidos de piezas de recambio y devoluciones.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioridad 2</p><h3 class="text-xl font-bold mt-2">Pedidos y entregas</h3><p class="mt-2">Consultas sobre pedidos y entregas, números de seguimiento, promociones y ofertas.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioridad 3</p><h3 class="text-xl font-bold mt-2">Otras solicitudes</h3><p class="mt-2">Todas las demás solicitudes.</p></div></div></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34">← Anterior</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-36">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col items-center justify-center text-center p-8 bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-36"><h1 class="opacity-0 translate-y-5 transition-all duration-500 text-4xl md:text-6xl font-bold" data-reveal="">¡Gracias por vuestra atención!</h1><p class="mt-8 text-xl text-gray-300">Designed by Bojan Dj.</p><a class="mt-10 bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1">Volver al inicio</a></section></main>
-<button @click="menuOpen = !menuOpen" class="fixed top-4 right-4 z-40 rounded-xl bg-indigo-700 hover:bg-indigo-600 px-4 py-3 shadow-xl font-semibold" type="button">☰ Secciones</button>
-<div @click.self="menuOpen=false" class="fixed inset-0 z-50 bg-black/70" x-cloak="" x-show="menuOpen" x-transition.opacity="">
-<aside class="absolute right-0 top-0 h-full w-full max-w-xl bg-gray-950 border-l border-gray-700 shadow-2xl flex flex-col" x-transition:enter="transition transform ease-out duration-300" x-transition:enter-end="translate-x-0" x-transition:enter-start="translate-x-full" x-transition:leave="transition transform ease-in duration-200" x-transition:leave-end="translate-x-full" x-transition:leave-start="translate-x-0">
-<div class="flex items-center justify-between p-5 border-b border-gray-700"><h2 class="text-2xl font-bold">Secciones</h2><button @click="menuOpen=false" aria-label="Close" class="text-3xl px-3">×</button></div>
-<div class="flex gap-3 p-4 border-b border-gray-700"><a @click.prevent="location.href='index.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="index.html">🇬🇧 EN</a><a @click.prevent="location.href='es.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="es.html">🇪🇸 ES</a><a @click.prevent="location.href='sr.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="sr.html">🇷🇸 SR</a></div>
-<nav class="overflow-y-auto p-4 space-y-2" id="section-navigation"></nav>
-</aside>
-</div>
-<div @click.self="closeLightbox()" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-3 md:p-8" x-cloak="" x-show="lightboxSrc" x-transition.opacity="">
-<button @click="closeLightbox()" aria-label="Close image" class="absolute top-4 right-5 z-[101] text-white text-5xl leading-none bg-black/50 rounded-full w-14 h-14">×</button>
-<img :src="lightboxSrc" alt="Enlarged screenshot" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"/>
-</div><script>function presentationApp(){return {menuOpen:false,lightboxSrc:null,openLightbox(src){this.lightboxSrc=src;},closeLightbox(){this.lightboxSrc=null;},closeOverlays(){this.menuOpen=false;this.lightboxSrc=null;}}} document.addEventListener('alpine:init',()=>{const nav=document.getElementById('section-navigation'); if(!nav)return; const labels=[...document.querySelectorAll('main > section')].map((s)=>({id:s.id,title:s.querySelector('h1,h2')?.innerText?.trim()||s.id})); labels.forEach((item)=>{const a=document.createElement('a');a.href='#'+item.id;a.textContent=item.title;a.className='block rounded-lg px-4 py-3 bg-gray-900 hover:bg-indigo-900 border border-gray-800';a.addEventListener('click',()=>{document.getElementById(item.id)?.scrollIntoView({behavior:'smooth'});Alpine.$data(document.body).menuOpen=false;});nav.appendChild(a);});});</script></body>
-</html>
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Tareas diarias – llamadas y correos electrónicos </h1></div>
+<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4"> Atención telefónica y por correo electrónico </h2><p class="text-lg"> Responde con educación y eficacia a las consultas por teléfono y correo electrónico, resolviendo las dudas del cliente. </p><p class="text-lg mt-4"> Conoce bien la web <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener noreferrer" target="_blank"> www.playmobil.es </a> y consúltala con frecuencia para conocer las promociones y novedades. </p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4"> Qué consultar en la web </h2><p class="text-lg"> El banner principal de la página de inicio muestra la promoción principal y otras novedades. </p><p class="text-lg mt-4"> Es fundamental conocer las condiciones de las promociones porque generan muchas consultas. </p><p class="text-lg mt-4"> Las consultas pueden tratar sobre entregas, productos, promociones, piezas sueltas o devoluciones. Estos temas se desarrollan a lo largo de la formación. </p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-25"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-27">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Promociones y consultas telefónicas </h1></div>
+<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Normalmente las promociones no son compatibles con </h2><ul class="list-disc pl-6 space-y-3 text-lg"><li> Piezas sueltas o de repuesto – <a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/piezas-sueltas-manuales-de-instrucciones/" rel="noopener noreferrer" target="_blank"> piezas sueltas y manuales de montaje </a></li><li> Otras promociones y códigos de descuento </li><li><a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/resultado-de-la-busqueda/?q=packs+promocionales" rel="noopener noreferrer" target="_blank"> Packs promocionales </a></li><li> Novedades lanzadas en los últimos dos meses </li></ul></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Qué no podemos hacer por teléfono </h2><ul class="list-disc pl-6 space-y-3 text-lg"><li> Solicitar datos personales para tramitar pedidos o reclamaciones. El cliente debe utilizar <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener noreferrer" target="_blank"> la web </a> o escribir a <a class="text-sky-300 underline" href="mailto:clientes@playmobil.de"> clientes@playmobil.de </a> . </li><li> Dar precios de productos. Remite al cliente a la web. </li><li> Dar referencias de piezas sueltas. Pide al cliente que escriba por correo o consulte los manuales de montaje de la web. </li></ul><p class="text-amber-300 font-semibold mt-4"> Estas consultas se resuelven por correo electrónico. </p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-28">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Información esencial para SAC </h1></div>
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Entrega </h2><p> Pedidos de surtido regular: <b> 6–8 días hábiles </b> . </p><p class="mt-2"> Pedidos de piezas sueltas: hasta <b> 10 semanas </b> . </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Pago </h2><p> Web: tarjeta de crédito y PayPal. </p><p class="mt-2"> Pedidos por correo electrónico: transferencia bancaria o tarjeta mediante enlace. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Devoluciones y cambios </h2><p> Plazo de desistimiento: <b></b> Consulta los Términos y Condiciones aprobados; las fuentes discrepan. </p><p class="mt-2"> No se modifican los pedidos ni las direcciones una vez confirmada la compra. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Gastos de envío </h2><p> Península y Baleares: <b> €9 </b> ; las promociones de envío gratuito para compras superiores a 60 € están sujetas a condiciones. </p><p class="mt-2"> Canarias, Ceuta y Melilla: <b> €22 </b> ; envío gratuito para compras superiores a 150 €, sujeto a condiciones. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Pedidos por correo electrónico </h2><p> No se aplican promociones a los pedidos por correo electrónico. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Piezas individuales de una figura </h2><p> No se pueden pedir piezas individuales de una figura, como pelucas, barbas o brazos. </p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-29">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> B) Estadísticas SAC </h1></div>
+<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 shadow-lg w-full" data-reveal=""><p class="text-xl mb-5"> Registra a diario los correos recibidos en la carpeta: </p><p class="text-xl font-bold text-sky-300 mb-7 break-all"> P:\ATENCION_AL_CLIENTE\ESTADISTICAS EMAIL SAC </p><div class="grid md:grid-cols-3 gap-4"><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2"> Correos en el buzón </h2><p> Anota el total de correos que aparece en el buzón a primera hora, antes de abrirlos. </p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2"> Correos recibidos </h2><p> Anota el número de correos recibidos el día anterior mediante la búsqueda correspondiente en Outlook. </p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2"> Pedidos y reclamaciones </h2><p> Después de leer y clasificar los correos, registra cuántos corresponden a pedidos y reclamaciones. </p></div></div></div></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/sac-statistics.png" alt="Estadísticas SAC: registra el buzón, los recibidos, los pedidos y las reclamaciones." loading="lazy" width="900" height="450"><figcaption>Estadísticas SAC: registra el buzón, los recibidos, los pedidos y las reclamaciones. Manual, página 3.</figcaption></figure><figure data-reveal=""><img src="assets/manual/outlook-previous-day-search.png" alt="Outlook: utiliza el filtro Ayer para contar los mensajes del día anterior." loading="lazy" width="900" height="450"><figcaption>Outlook: utiliza el filtro Ayer para contar los mensajes del día anterior. Manual, página 4.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-30">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> C) Consulta de pedidos bloqueados en SAP </h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Primera búsqueda – VA14L </h2><p class="text-lg"> Utiliza la transacción SAP <b class="text-sky-300"> VA14L </b> para consultar los pedidos bloqueados por importe elevado en España y Portugal. </p><p class="mt-4"> En <b> Bloqueo de entrega cabecera </b> , realiza la primera búsqueda con: </p><ul class="list-disc pl-6 mt-2 space-y-2 text-lg"><li> Bloqueo de entrega: <b> Z1 </b></li><li> Organización de ventas: <b> 2090 </b> (España) </li><li> Canal de distribución: <b> 01 </b></li><li> Sector: <b> 01 </b></li></ul><p class="mt-4"> Pulsa el icono del reloj para mostrar los pedidos bloqueados. </p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Eliminar el bloqueo </h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li> Abre el pedido pulsando su número en la tabla de resultados. </li><li> En <b> Bloqueo entrega </b> , quita la opción <b> Comprobación importe </b> . </li><li> Graba el pedido. </li><li> Cierra el pedido, vuelve a la pantalla inicial y pulsa el botón verde para guardar. </li></ol><p class="mt-4 text-amber-300 font-semibold"> Repite la búsqueda con Z0, además de Z1. </p></article></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/va14l-command.png" alt="Introduce la transacción VA14L." loading="lazy" width="900" height="450"><figcaption>Introduce la transacción VA14L. Manual, página 4.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-search-parameters.png" alt="VA14L: Z1, organización de ventas 2090, canal 01 y sector 01." loading="lazy" width="900" height="450"><figcaption>VA14L: Z1, organización de ventas 2090, canal 01 y sector 01. Manual, página 4.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-blocked-orders.png" alt="Revisa los pedidos bloqueados; los datos de clientes están ocultados." loading="lazy" width="900" height="450"><figcaption>Revisa los pedidos bloqueados; los datos de clientes están ocultados. Manual, página 5.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-remove-delivery-block.png" alt="Bloqueo entrega: elimina Comprobación importe tras revisar el pedido." loading="lazy" width="900" height="450"><figcaption>Bloqueo entrega: elimina Comprobación importe tras revisar el pedido. Manual, página 5.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-save-modified-order.png" alt="Graba el pedido modificado y vuelve con el control indicado." loading="lazy" width="900" height="450"><figcaption>Graba el pedido modificado y vuelve con el control indicado. Manual, página 5.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-31">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> C) Pedidos bloqueados – consulta de Portugal </h1></div>
+<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 w-full" data-reveal=""><h2 class="text-2xl font-bold mb-5"> Repite las mismas comprobaciones para Portugal </h2><p class="text-lg mb-6"> Realiza las dos búsquedas de bloqueo de entrega con la organización de ventas de Portugal: </p><div class="grid md:grid-cols-2 gap-4"><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300"> España </p><p class="text-3xl font-bold mt-2"> 2090 </p><p class="mt-3"> Z1 y Z0 </p></div><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300"> Portugal </p><p class="text-3xl font-bold mt-2"> 2095 </p><p class="mt-3"> Z1 y Z0 </p></div></div><p class="text-xl font-bold text-emerald-300 mt-7"> Resumen diario: 2090 – Z1 y Z0; 2095 – Z1 y Z0. </p><p class="text-gray-300 mt-3"> En cada búsqueda, pulsa el reloj, revisa los resultados y elimina el bloqueo cuando proceda. </p></div></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/va14l-portugal-z0.png" alt="Portugal: organización 2095, ejemplo Z0. Repite la consulta con Z1." loading="lazy" width="900" height="450"><figcaption>Portugal: organización 2095, ejemplo Z0. Repite la consulta con Z1. Manual, página 6.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-32">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> D) Informes de Contabilidad – clientes bloqueados </h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Informes diarios de Contabilidad </h2><p class="text-lg"> Recibimos informes automáticos de Contabilidad a diario. Dos tipos requieren actuación: </p><ul class="list-disc pl-6 mt-4 space-y-3 text-lg"><li> Clientes que deben bloquearse por datos falsos o incorrectos en sus pedidos, que incumplen los Términos y Condiciones. </li><li> Informes de cancelaciones y abonos de pedidos devueltos a Alemania. </li></ul><p class="mt-4"> Archiva los demás informes en la carpeta Contabilidad de Outlook. </p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Bloquear un cliente </h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li> Abre el correo y revisa el PDF adjunto con los clientes que deben bloquearse. </li><li> Si aparece <b> “Error en el bloque de la Contraparte” </b> , escribe al equipo de <span class="text-sky-300 underline"> Contabilidad </span> para solicitar el bloqueo de los clientes. </li><li> Informa por correo a los clientes afectados de que sus cuentas están deshabilitadas. </li><li> Conserva el correo del día anterior en Contabilidad como no leído. Reenvíalo con todos los clientes y SAC en copia oculta (CCO). </li></ol></article></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/accounting-report-inbox.png" alt="Tipos de informes diarios de Contabilidad; remitentes y fechas privados eliminados." loading="lazy" width="900" height="450"><figcaption>Tipos de informes diarios de Contabilidad; remitentes y fechas privados eliminados. Manual, página 6.</figcaption></figure><figure data-reveal=""><img src="assets/manual/accounting-block-report.png" alt="Informe de error de la contraparte: solicita el bloqueo del cliente a Contabilidad." loading="lazy" width="900" height="450"><figcaption>Informe de error de la contraparte: solicita el bloqueo del cliente a Contabilidad. Manual, página 7.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-33">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> D) Informes de cancelaciones y abonos </h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Comprobar la cancelación </h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li> Abre el informe de cancelaciones y abonos enviado por Alemania. </li><li> En SAP, ejecuta <b> VA05 </b> con el número de cliente. </li><li> Amplía el periodo de búsqueda a los dos meses anteriores. </li><li> Comprueba si el cliente tiene el pedido <b> ZTAI </b> correspondiente y la devolución <b> RE </b> creada por Alemania. </li></ol></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Qué comunicar a Contabilidad </h2><ul class="list-disc pl-6 space-y-3 text-lg"><li> Si el ZTAI y la devolución RE son correctos y no hay una compensación previa, reenvía el informe a Contabilidad y solicita el reembolso. </li><li> Si existe un <b> ZTA3 </b> con el mismo contenido y la mercancía se ha enviado gratuitamente, no corresponde ese reembolso. </li><li> Si ya se ha enviado la reclamación, indica a Contabilidad que no debe reembolsar al <b> cliente afectado </b> ; se emitirá una factura <b> L2 </b> para compensar su cuenta. </li></ul><p class="mt-4 text-amber-300"> Consulta el procedimiento L2 en <b> J) Rectificación de abonos – Facturas L2 (y sección 37) </b> y registra la operación en <b> MARKETING\ABONOS CONTABILIDAD_01 </b> . </p></article></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/cancellation-report.png" alt="Informe de cancelaciones: verifica los documentos antes de solicitar un reembolso." loading="lazy" width="900" height="450"><figcaption>Informe de cancelaciones: verifica los documentos antes de solicitar un reembolso. Manual, página 8.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va05-cancellation-check.png" alt="Utiliza VA05 y amplía la búsqueda a los dos meses anteriores." loading="lazy" width="900" height="450"><figcaption>Utiliza VA05 y amplía la búsqueda a los dos meses anteriores. Manual, página 8.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va05-refund-verification.png" alt="Compara ZTAI y RE con el historial de sustituciones y abonos." loading="lazy" width="900" height="450"><figcaption>Compara ZTAI y RE con el historial de sustituciones y abonos. Manual, página 9.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-34">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Prioridades SAC – Navidad </h1></div>
+<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal=""> Objetivos generales: dar soluciones rápidas y de calidad, informar del estado de los envíos y garantizar el servicio posventa. </p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-2"> Noviembre – enero </h2><p class="text-gray-300 mb-5"> Durante el periodo navideño, las prioridades son: </p><div class="grid md:grid-cols-3 gap-4"><div class="bg-rose-950/60 rounded-xl p-5"><p class="text-sm uppercase"> Prioridad 1 </p><h3 class="text-xl font-bold mt-2"> Pedidos y entregas </h3><p class="mt-2"> Consultas de pedidos y entregas, seguimiento, promociones y ofertas. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Prioridad 2 </p><h3 class="text-xl font-bold mt-2"> Servicio posventa </h3><p class="mt-2"> Piezas faltantes o defectuosas, pedidos de piezas de repuesto y devoluciones. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Prioridad 3 </p><h3 class="text-xl font-bold mt-2"> Otras solicitudes </h3><p class="mt-2"> Todas las demás solicitudes de clientes. </p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-35"> Siguiente → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-35">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Prioridades SAC – resto del año </h1></div>
+<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal=""> De febrero a octubre, el servicio posventa es la prioridad principal. </p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-5"> Febrero – octubre </h2><div class="grid md:grid-cols-3 gap-4"><div class="bg-emerald-950/60 rounded-xl p-5"><p class="text-sm uppercase"> Prioridad 1 </p><h3 class="text-xl font-bold mt-2"> Servicio posventa </h3><p class="mt-2"> Piezas faltantes o defectuosas, pedidos de piezas de repuesto y devoluciones. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Prioridad 2 </p><h3 class="text-xl font-bold mt-2"> Pedidos y entregas </h3><p class="mt-2"> Consultas de pedidos y entregas, seguimiento, promociones y ofertas. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Prioridad 3 </p><h3 class="text-xl font-bold mt-2"> Otras solicitudes </h3><p class="mt-2"> Todas las demás solicitudes de clientes. </p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34"> ← Anterior </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-37"> Siguiente → </a></div></section><section id="section-37" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Facturas L2 – rectificar un abono</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Cuándo utilizar L2</h2><p class="text-base mt-4">L2 rectifica un abono incorrecto o duplicado para que el cliente reciba únicamente el reembolso que corresponde.</p><p class="text-base mt-4">Si se ha enviado un ZTA3 gratuito con el mismo contenido, indica a Contabilidad que no realice el reembolso y sigue el procedimiento L2. Registra la rectificación en ABONOS CONTABILIDAD_01.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Secuencia documentada</h2><p class="text-base mt-4">1. En Crear pedido, selecciona L2. Pulsa Crear con referencia e introduce la factura original de la compra.</p><p class="text-base mt-4">2. Pulsa Tomar. En Motivo de pedido, selecciona Razón devolución desconocida y graba.</p><p class="text-base mt-4">3. Anota el número de documento generado. Ábrelo en Modificar pedido y graba para obtener el número de factura. Coordina la rectificación con Contabilidad.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Fuente: Manual de enero de 2026, páginas 27–29; 9</p><div class="flex justify-between p-5"><a href="#section-35" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Anterior</a><a href="#section-38" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Siguiente →</a></div></section><section id="section-38" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Demandware – un pedido no aparece en SAP</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Investigar el pedido</h2><p class="text-base mt-4">Utiliza la búsqueda avanzada de Demandware / Salesforce y busca por el correo del cliente para revisar su historial de pedidos.</p><p class="text-base mt-4">Los pedidos ERROR y CREADO no se han grabado correctamente y no pueden tramitarse ni enviarse. Comprueba si el cliente está bloqueado en SAP o si los datos de facturación difieren entre pedidos anteriores.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Explicar y escalar</h2><p class="text-base mt-4">Si la cuenta está bloqueada, explica que no se puede enviar el pedido. Si se trata de un fallo del sistema sin bloqueo, ofrece un presupuesto manual y el pago por transferencia o enlace.</p><p class="text-base mt-4">El manual no aclara el tratamiento del pago: la página 36 solicita un reembolso y la 37 describe una retención. Pide a Contabilidad que compruebe el estado real del pago; no prometas un reembolso ni su plazo.</p><p class="text-base mt-4">La recuperación manual menciona las condiciones de la web, pero la formación más reciente excluye promociones en pedidos por correo. Escala cualquier excepción antes de prometerla.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Fuente: Manual de enero de 2026, páginas 36–37; Formación de octubre de 2026, páginas 16</p><div class="flex justify-between p-5"><a href="#section-37" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Anterior</a><a href="#section-39" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Siguiente →</a></div></section><section id="section-39" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Reactivar un código de descuento</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Comprobar el caso concreto</h2><p class="text-base mt-4">Un código de un solo uso puede quedar inactivo tras un intento de pedido que no se confirmó. Este procedimiento se aplica a ese caso documentado.</p><p class="text-base mt-4">En Demandware, abre Pedidos y busca con el correo del cliente. Revisa el historial.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Reactivar y guardar</h2><p class="text-base mt-4">Abre el último pedido correspondiente que figure como ERROR o CREADO.</p><p class="text-base mt-4">En ESTADO DE PEDIDO, selecciona error y guarda. Así se reactiva el código en el caso documentado.</p><p class="text-base mt-4">No apliques este procedimiento a una compra completada ni prometas que el código sirve para todos los productos. Revisa las condiciones de la promoción.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Fuente: Manual de enero de 2026, páginas 38</p><div class="flex justify-between p-5"><a href="#section-38" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Anterior</a><a href="#section-40" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Siguiente →</a></div></section><section id="section-40" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Validación de pedidos y excepciones operativas</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Validar según el método de pago</h2><p class="text-base mt-4">Transferencia: espera la confirmación de Contabilidad; después, abre Modificar pedido, quita Operación por aclarar y graba.</p><p class="text-base mt-4">Enlace de pago (PBYL): la validación es automática. No quites Operación por aclarar manualmente. Restablece el bloqueo tras modificar un pedido manual pendiente de pago.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Comprobar las excepciones</h2><p class="text-base mt-4">Las reclamaciones normalmente no pueden modificarse tras grabarlas. Puede existir una posibilidad inmediatamente después, antes de que se procese el albarán.</p><p class="text-base mt-4">Un número de cliente que comienza por 130 corresponde a una tienda (B2B); no lo utilices para una reclamación de consumidor. Busca primero la cuenta de consumidor adecuada antes de crear otra.</p><p class="text-base mt-4">Si un cliente bloqueado necesita un abono, pide a Contabilidad que quite el bloqueo temporalmente y que lo restablezca después. No se pueden pedir piezas sueltas de sobres sorpresa.</p><p class="text-base mt-4">Las tiendas online son B2C para España y Portugal. Atiende las reclamaciones de consumidores tramitadas por tiendas y remite las demás reclamaciones B2B a Administración de Ventas.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Fuente: Manual de enero de 2026, páginas 14, 22, 24, 31, 38; Formación de octubre de 2026, páginas 3, 28–30</p><div class="flex justify-between p-5"><a href="#section-39" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Anterior</a><a href="#section-36" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Siguiente →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col items-center justify-center text-center p-8 bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-36"><h1 class="opacity-0 translate-y-5 transition-all duration-500 text-4xl md:text-6xl font-bold" data-reveal=""> ¡Gracias por vuestra atención! </h1><p class="mt-8 text-xl text-gray-300"> Diseño de Bojan Dj. </p><a class="mt-10 bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1"> Volver al inicio </a></section></main>
+
+
+
+<noscript>JavaScript is required / Se necesita JavaScript / Potreban je JavaScript.</noscript>
+</body></html>

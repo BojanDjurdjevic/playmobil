@@ -1,350 +1,231 @@
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>PLAYMOBIL – SAC Training</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-<body @keydown.escape.window="closeOverlays()" class="bg-gray-800 text-white" x-data="presentationApp()">
-<main class="h-dvh overflow-y-auto snap-y snap-mandatory scroll-smooth" x-data="" x-init="
-        $nextTick(() =&gt; {
-            const observer = new IntersectionObserver((entries) =&gt; {
-                entries.forEach(entry =&gt; {
-                    if (!entry.isIntersecting) return;
-
-                    const cards = entry.target.querySelectorAll('[data-reveal]');
-
-                    cards.forEach((card, index) =&gt; {
-                        card.style.transitionDelay = `${index * 120}ms`;
-
-                        requestAnimationFrame(() =&gt; {
-                            card.classList.remove('opacity-0', 'translate-y-5');
-                        });
-                    });
-
-                    observer.unobserve(entry.target);
-                });
-            }, {
-                root: $el,
-                threshold: 0.15
-            });
-
-            $el.querySelectorAll('section').forEach(section =&gt; {
-                observer.observe(section);
-            });
-        });
-    ">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>PLAYMOBIL · SAC Training Center</title>
+<link rel="stylesheet" href="css/tailwind.css"><link rel="stylesheet" href="css/center.css"><link rel="stylesheet" href="css/presentation.css">
+<script defer src="js/i18n.js"></script><script defer src="js/presentation.js"></script><script defer src="js/vendor/alpine-3.15.8.min.js"></script></head>
+<body class="presentation bg-gray-800 text-white" x-data="{showContext:false}">
+<main class="h-dvh overflow-y-auto scroll-smooth" id="training">
 <!-- SECTION 1 - WELCOME -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-1">
 <div class="flex-1 flex items-center justify-center text-center p-6">
-<h1 class="opacity-0 translate-y-5 transition-all duration-500 ease-out text-4xl md:text-6xl font-bold" data-reveal="">Welcome to my presentation of PLAYMOBIL</h1>
+<h1 class="opacity-0 translate-y-5 transition-all duration-500 ease-out text-4xl md:text-6xl font-bold" data-reveal=""> Welcome to PLAYMOBIL SAC training </h1>
 </div>
 <div class="flex-1 flex items-center justify-center text-center p-6">
 
 </div>
 <div class="flex justify-end p-6">
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-2">
-                Next ↓
-            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-2"> Next ↓ </a>
 </div>
 </section>
 <!-- SECTION 2 - DELIVERY TIME -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-2">
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                Delivery time and transport costs
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> Delivery time and transport costs </h1>
 </div>
 <div class="flex-1 min-h-0 grid grid-rows-2 gap-5 px-6 pb-4">
 <!-- CARD 1 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 p-6 rounded-2xl shadow-lg grid grid-cols-3 gap-3 items-center text-center" data-reveal="">
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    Surtido regular
-                </p>
-<p class="text-2xl md:text-4xl">→</p>
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    6-8 Working days
-                </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> Regular assortment </p>
+<p class="text-2xl md:text-4xl"> → </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> 6–8 working days </p>
 </div>
 <!-- CARD 2 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 p-6 rounded-2xl shadow-lg grid grid-cols-3 gap-3 items-center text-center" data-reveal="">
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    Piezas sueltas
-                </p>
-<p class="text-2xl md:text-4xl">→</p>
-<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
-                    Up to 10 weeks
-                </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> Spare parts </p>
+<p class="text-2xl md:text-4xl"> → </p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900"> Up to 10 weeks </p>
 </div>
 </div>
 <div class="flex justify-between p-6">
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1">
-                ↑ Previous
-            </a>
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-3">
-                Next ↓
-            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1"> ↑ Previous </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-3"> Next ↓ </a>
 </div>
 </section>
 <!-- SECTION 3 - SHIPPING COSTS -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-3">
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                Shipping Costs
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> Shipping Costs </h1>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-3 gap-5 px-6 pb-4">
 <!-- CARD 1 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
-<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
-                    España / Portugal
-                </p>
-<p class="text-xl md:text-3xl font-semibold">
-                    9 EUR
-                </p>
-<p class="text-lg md:text-xl">
-                    Free shipping over 60 EUR
-                </p>
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full"> Spain / Portugal </p>
+<p class="text-xl md:text-3xl font-semibold"> 9 EUR </p>
+<p class="text-lg md:text-xl"> Free-shipping promotion: check conditions for purchases over EUR 60 </p>
 </div>
 <!-- CARD 2 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
-<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
-                    Canarias / Ceuta / Melilla
-                </p>
-<p class="text-xl md:text-3xl font-semibold">
-                    22 EUR
-                </p>
-<p class="text-lg md:text-xl">
-                    Free shipping over 150 EUR
-                </p>
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full"> Canary Islands / Ceuta / Melilla </p>
+<p class="text-xl md:text-3xl font-semibold"> 22 EUR </p>
+<p class="text-lg md:text-xl"> Free shipping for purchases over EUR 150; check conditions </p>
 </div>
 <!-- CARD 3 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
-<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
-                    Azores / Madeira
-                </p>
-<p class="text-xl md:text-3xl font-semibold">
-                    22 EUR
-                </p>
-<p class="text-lg md:text-xl">
-                    Free shipping over 150 EUR
-                </p>
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full"> Azores / Madeira </p>
+<p class="text-xl md:text-3xl font-semibold"> 22 EUR </p>
+<p class="text-lg md:text-xl"> Free shipping for purchases over EUR 150; check conditions </p>
 </div>
 </div>
 <div class="flex justify-between p-6">
-<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-2">
-                ↑ Previous
-            </a>
-<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-4">
-                Next ↓
-            </a>
+<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-2"> ↑ Previous </a>
+<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-4"> Next ↓ </a>
 </div>
 </section>
 <!-- SECTION 4 - BOOKING PROCESS -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-4">
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                BOOKING PROCESS
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> BOOKING PROCESS </h1>
 </div>
 <!-- BOOKING STEPS -->
 <div class="flex-1 min-h-0 grid grid-cols-5 gap-4 px-5 pb-4">
 <!-- STEP 1 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">1.</span>
+<span class="text-3xl font-bold"> 1. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    After booking the order
-                </h2>
+<h2 class="text-xl font-bold mb-5"> After booking the order </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client receives a generic confirmation email.
-                </p>
+<p class="text-lg md:text-xl"> The client receives a generic confirmation email. </p>
 </div>
 <!-- STEP 2 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">2.</span>
+<span class="text-3xl font-bold"> 2. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    Order leaves the warehouse
-                </h2>
+<h2 class="text-xl font-bold mb-5"> Order leaves the warehouse </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client receives an email with the invoice.
-                </p>
+<p class="text-lg md:text-xl"> The client receives an email with the invoice. </p>
 </div>
 <!-- STEP 3 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">3.</span>
+<span class="text-3xl font-bold"> 3. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    Transport agency takes the order
-                </h2>
+<h2 class="text-xl font-bold mb-5"> Transport agency takes the order </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    DHL / UPS sends the client an email with delivery information.
-                </p>
+<p class="text-lg md:text-xl"> DHL, CTT or UPS emails shipment information. Also check the spam folder. </p>
 </div>
 <!-- STEP 4 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">4.</span>
+<span class="text-3xl font-bold"> 4. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    The client receives the order
-                </h2>
+<h2 class="text-xl font-bold mb-5"> The client receives the order </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client has 14 DAYS to make a claim or cancel and return the order.
-                </p>
+<p class="text-lg md:text-xl"> The sources disagree on the withdrawal deadline. Check approved Terms &amp; Conditions and ask the SAC supervisor if uncertain. </p>
 </div>
 <!-- STEP 5 -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
-<span class="text-3xl font-bold">5.</span>
+<span class="text-3xl font-bold"> 5. </span>
 <div class="w-12 border-t-2 border-pink-400 my-5"></div>
-<h2 class="text-xl font-bold mb-5">
-                    Return / cancellation
-                </h2>
+<h2 class="text-xl font-bold mb-5"> Return / cancellation </h2>
 <div class="w-12 border-t border-pink-400 mb-5"></div>
-<p class="text-lg md:text-xl">
-                    The client pays the return costs when cancelling. If the order is damaged, Playmobil covers them.
-                </p>
+<p class="text-lg md:text-xl"> The customer pays return costs. PLAYMOBIL pays when damage was reported on delivery and recorded on the delivery receipt. </p>
 </div>
 </div>
 <div class="flex justify-between p-6">
-<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-3">
-                ↑ Previous
-            </a>
-<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-5">
-                Next ↓
-            </a>
+<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-3"> ↑ Previous </a>
+<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-5"> Next ↓ </a>
 </div>
 </section>
 <!-- SECTION 5 - SAP GENERAL GUIDELINES -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-5">
 <!-- TITLE -->
 <div class="flex-none text-center py-8 px-4">
-<h1 class="text-3xl md:text-4xl font-bold">
-                General SAP Guidelines
-            </h1>
+<h1 class="text-3xl md:text-4xl font-bold"> General SAP Guidelines </h1>
 </div>
 <!-- CARDS -->
 <div class="flex-1 min-h-0 grid grid-cols-3 gap-6 px-6 pb-4">
 <!-- CARD 1 - SALES ORGANIZATION -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-8" data-reveal="">
-<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
-                    Sales Organization
-                </h2>
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300"> Sales Organization </h2>
 <div class="w-16 border-t-2 border-purple-400"></div>
 <div class="w-full bg-gray-800 rounded-xl p-5">
-<p class="text-lg text-gray-400 mb-2">Spain</p>
-<p class="text-3xl md:text-4xl font-bold">2090</p>
+<p class="text-lg text-gray-400 mb-2"> Spain </p>
+<p class="text-3xl md:text-4xl font-bold"> 2090 </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-5">
-<p class="text-lg text-gray-400 mb-2">Portugal</p>
-<p class="text-3xl md:text-4xl font-bold">2095</p>
+<p class="text-lg text-gray-400 mb-2"> Portugal </p>
+<p class="text-3xl md:text-4xl font-bold"> 2095 </p>
 </div>
 </div>
 <!-- CARD 2 - ORDER TYPES -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-4" data-reveal="">
-<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
-                    Order Types
-                </h2>
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300"> Order Types </h2>
 <div class="w-16 border-t-2 border-purple-400 mb-2"></div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">ZTAC</p>
-<p class="text-lg mt-1">Individual spare parts and DS orders</p>
+<p class="text-2xl font-bold text-purple-200"> ZTAC </p>
+<p class="text-lg mt-1"> Individual spare parts and DS orders </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">ZTA3</p>
-<p class="text-lg mt-1">Claims / Complaints</p>
+<p class="text-2xl font-bold text-purple-200"> ZTA3 </p>
+<p class="text-lg mt-1"> Claims / Complaints </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">ZG2R</p>
-<p class="text-lg mt-1">Credit Note</p>
+<p class="text-2xl font-bold text-purple-200"> ZG2R </p>
+<p class="text-lg mt-1"> Credit Note </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">L2</p>
-<p class="text-lg mt-1">Invoice</p>
+<p class="text-2xl font-bold text-purple-200"> L2 </p>
+<p class="text-lg mt-1"> Invoice </p>
 </div>
-</div>
+<div class="w-full bg-gray-800 rounded-xl p-4"><p class="text-2xl font-bold text-purple-200">ZTAI</p><p class="text-lg mt-1">Regular assortment, DS and spare parts</p></div></div>
 <!-- CARD 3 - PAYMENT METHODS -->
 <div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-4" data-reveal="">
-<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
-                    Payment Methods
-                </h2>
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300"> Payment Methods </h2>
 <div class="w-16 border-t-2 border-purple-400 mb-2"></div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">DE22</p>
-<p class="text-lg mt-1">Free of charge</p>
-<p class="text-sm text-gray-400">(Claims)</p>
+<p class="text-2xl font-bold text-purple-200"> DE22 </p>
+<p class="text-lg mt-1"> Free of charge </p>
+<p class="text-sm text-gray-400"> (Claims) </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">DE01</p>
-<p class="text-lg mt-1">Bank transfer</p>
-<p class="text-sm text-gray-400">(Email orders)</p>
+<p class="text-2xl font-bold text-purple-200"> DE01 </p>
+<p class="text-lg mt-1"> Bank transfer </p>
+<p class="text-sm text-gray-400"> (Email orders) </p>
 </div>
 <div class="w-full bg-gray-800 rounded-xl p-4">
-<p class="text-2xl font-bold text-purple-200">PBYL</p>
-<p class="text-lg mt-1">Payment by link</p>
-<p class="text-sm text-gray-400">(Email orders)</p>
+<p class="text-2xl font-bold text-purple-200"> PBYL </p>
+<p class="text-lg mt-1"> Payment by link </p>
+<p class="text-sm text-gray-400"> (Email orders) </p>
 </div>
 </div>
 </div>
 <!-- NAVIGATION -->
 <div class="flex justify-between p-6">
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-4">
-                ↑ Previous
-            </a>
-<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-6">
-                Next ↓
-            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-4"> ↑ Previous </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-6"> Next ↓ </a>
 </div>
 </section>
 <!-- SECTION 6 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-6">
 <!-- Heading -->
 <div class="text-center pt-8 pb-4 px-6 opacity-0 translate-y-5 transition-all duration-500 ease-out" data-reveal="">
-<h2 class="text-3xl font-bold tracking-wide">
-                Claims – ZTA3 Process
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Claims – ZTA3 Process </h2>
 </div>
 <!-- Content -->
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-6">
 <div class="w-full max-w-5xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-8 flex flex-col justify-center gap-8 transition-all duration-300 opacity-0 translate-y-5" data-reveal="">
 <!-- Claims -->
 <div class="text-center">
-<h3 class="text-2xl font-bold text-emerald-400 mb-4">
-                        Claims
-                    </h3>
-<p class="text-xl text-gray-200 leading-relaxed">
-                        We receive an email reporting a missing or defective part.
-                    </p>
+<h3 class="text-2xl font-bold text-emerald-400 mb-4"> Claims </h3>
+<p class="text-xl text-gray-200 leading-relaxed"> We receive an email reporting a missing or defective part. </p>
 </div>
 <div class="border-t border-emerald-800"></div>
 <!-- Creating ZTA3 -->
 <div>
-<h3 class="text-2xl font-bold text-emerald-400 mb-6 text-center">
-                        Creating a ZTA3
-                    </h3>
+<h3 class="text-2xl font-bold text-emerald-400 mb-6 text-center"> Creating a ZTA3 </h3>
 <ul class="space-y-5 text-lg text-gray-200">
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">01.</span>
-<span>Check whether the customer already exists in the system or needs to be created.</span>
+<span class="text-emerald-400 font-bold"> 01. </span>
+<span> Check whether the customer already exists in the system or needs to be created. </span>
 </li>
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">02.</span>
-<span>Enter the ZTA3 order.</span>
+<span class="text-emerald-400 font-bold"> 02. </span>
+<span> Enter the ZTA3 order. </span>
 </li>
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">03.</span>
-<span>Note down and register the claim reference number.</span>
+<span class="text-emerald-400 font-bold"> 03. </span>
+<span> Note down and register the claim reference number. </span>
 </li>
 <li class="flex items-start gap-3">
-<span class="text-emerald-400 font-bold">04.</span>
-<span>Respond to the customer.</span>
+<span class="text-emerald-400 font-bold"> 04. </span>
+<span> Respond to the customer. </span>
 </li>
 </ul>
 </div>
@@ -352,732 +233,541 @@
 </div>
 <!-- Navigation -->
 <div class="flex justify-between items-center px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-5">
-                ← Previous
-            </a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-7">
-                Next →
-            </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-5"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-7"> Next → </a>
 </div>
 </section>
 <!-- SECTION 7 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-7">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Claims – Checking Existing Customers
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Claims – Checking Existing Customers </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<p class="text-xl text-pink-300 font-semibold text-center">
-                    Check whether the customer already exists in SAP.
-                </p>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP customer search process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-18.png" title="Click to enlarge"/>
+<p class="text-xl text-pink-300 font-semibold text-center"> Check whether the customer already exists in SAP. </p>
+<img alt="SAP customer search process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-18.png" title="Click to enlarge">
 <div class="text-center bg-gray-800 rounded-xl p-4">
-<p class="text-lg font-semibold text-pink-300">
-                        Important
-                    </p>
-<p class="text-gray-200 text-lg">
-                        Note down the customer number to create the ZTA3 claim.
-                    </p>
+<p class="text-lg font-semibold text-pink-300"> Important </p>
+<p class="text-gray-200 text-lg"> Note down the customer number to create the ZTA3 claim. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-6">
-                ← Previous
-            </a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-8">
-                Next →
-            </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-6"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-8"> Next → </a>
 </div>
 </section>
 <!-- SECTION 8 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-8">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Claims – Creating a New Customer
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Claims – Creating a New Customer </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <!-- SAP screenshots -->
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center mb-4">
-                    Customer Creation in SAP
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP new customer creation" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-19.png" title="Click to enlarge"/>
+<h3 class="text-xl font-bold text-purple-300 text-center mb-4"> Customer Creation in SAP </h3>
+<img alt="SAP new customer creation" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-19.png" title="Click to enlarge">
 </div>
 <!-- Required information -->
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center mb-5">
-                    Customer Details
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center mb-5"> Customer Details </h3>
 <ul class="space-y-3 text-gray-200 text-base">
-<li>• Title (Mr./Mrs.)</li>
-<li>• Surname and first name</li>
-<li>• Street and address</li>
-<li>• Postal code and city</li>
-<li>• Country and region</li>
-<li>• Tax identification number (DNI/CIF)</li>
-<li>• Telephone number</li>
-<li>• Email address</li>
+<li> • Title (Mr./Mrs.) </li>
+<li> • Surname and first name </li>
+<li> • Street and address </li>
+<li> • Postal code and city </li>
+<li> • Country and region </li>
+<li> • Tax identification number (DNI/CIF) </li>
+<li> • Telephone number </li>
+<li> • Email address </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="font-bold text-purple-300 mb-2">
-                        Create Order
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Select <strong>ZTA3</strong> for claims or
-                        <strong>ZTAC</strong> for orders if you are
-                        going to create an order immediately afterwards.
-                    </p>
+<p class="font-bold text-purple-300 mb-2"> Create Order </p>
+<p class="text-gray-200 text-sm"> Select <strong> ZTA3 </strong> for claims or <strong> ZTAC </strong> for orders if you are going to create an order immediately afterwards. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-7">
-                ← Previous
-            </a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-9">
-                Next →
-            </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-7"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-9"> Next → </a>
 </div>
 </section>
 <!-- SECTION 9 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-9">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Claims – Creating a ZTA3
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Claims – Creating a ZTA3 </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Enter the ZTA3 order in SAP
-                </h3>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Enter the ZTA3 order in SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTA3 order creation process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-20.png" title="Click to enlarge"/>
+<img alt="SAP ZTA3 claim creation" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-20.png" title="Click to enlarge">
 </div>
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="text-lg font-bold text-emerald-300">
-                        Important – Step 5
-                    </p>
-<p class="text-gray-200 text-lg">
-                        Note down the claim reference number after saving the ZTA3.
-                    </p>
+<p class="text-lg font-bold text-emerald-300"> Important – Step 5 </p>
+<p class="text-gray-200 text-lg"> Note down the claim reference number after saving the ZTA3. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-8">
-                ← Previous
-            </a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-10">
-                Next →
-            </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-8"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-10"> Next → </a>
 </div>
 </section>
 <!-- SECTION 10 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-10">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Claims – Registering and Replying
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Claims – Registering and Replying </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <!-- Screenshot -->
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
-                    Register the Claim
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="Claim tracking spreadsheet and customer email example" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-21.png" title="Click to enlarge"/>
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4"> Register the Claim </h3>
+<img alt="Claim register and customer reply example" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-21.png" title="Click to enlarge">
 </div>
 <!-- Reply -->
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
-                    Reply to the Customer
-                </h3>
-<p class="text-gray-200 text-base mb-4">
-                    Make sure the claim is registered and the customer receives
-                    a clear update.
-                </p>
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4"> Reply to the Customer </h3>
+<p class="text-gray-200 text-base mb-4"> Make sure the claim is registered and the customer receives a clear update. </p>
 <ul class="space-y-3 text-gray-200 text-base">
-<li>• Record the claim reference number.</li>
-<li>• Confirm that the request has been received.</li>
-<li>• Inform the customer that the replacement parts have been requested from Germany.</li>
-<li>• Provide the claim reference number.</li>
-<li>• Explain that delivery may take a few weeks.</li>
-<li>• Ask the customer to contact us again if the parts have not arrived within approximately 20 working days.</li>
+<li> • Record the claim reference number. </li>
+<li> • Confirm that the request has been received. </li>
+<li> • Inform the customer that the replacement parts have been requested from Germany. </li>
+<li> • Provide the claim reference number. </li>
+<li> • Explain that delivery may take a few weeks. </li>
+<li> • Ask the customer to contact us again if the parts have not arrived within approximately 20 working days. </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="text-pink-300 font-bold mb-1">
-                        Important
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Ask customers not to send duplicate emails, as this may delay claim processing.
-                    </p>
+<p class="text-pink-300 font-bold mb-1"> Important </p>
+<p class="text-gray-200 text-sm"> Ask customers to quote their claim reference when contacting us again. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-9">
-                ← Previous
-            </a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-11">
-                Next →
-            </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-9"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-11"> Next → </a>
 </div>
 </section>
 <!-- SECTION 11 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-11">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Email Orders – Creating a ZTAC
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Email Orders – Creating a ZTAC </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center mb-4">
-                    Order Processing
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center mb-4"> Order Processing </h3>
 <ul class="space-y-4 text-gray-200 text-lg">
-<li>01. Check whether the customer already exists or needs to be created.</li>
-<li>02. Enter the ZTAC order in SAP.</li>
-<li>03. Send the quotation to the customer.</li>
+<li> 01. Check whether the customer already exists or needs to be created. </li>
+<li> 02. Enter the ZTAC order in SAP. </li>
+<li> 03. Send the quotation to the customer. </li>
 </ul>
 </div>
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-4 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="Customer email with requested products" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-22.png" title="Click to enlarge"/>
+<img alt="Customer email requesting products" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-22.png" title="Click to enlarge">
 </div>
 </div>
 <div class="px-8 pb-5">
 <div class="bg-gray-900 rounded-xl p-4 text-center">
-<p class="font-bold text-purple-300 mb-2">Email Order Restrictions</p>
-<p class="text-gray-200 text-base">
-                    Maximum 40 different product references and 20 units of the same reference per order.
-                </p>
+<p class="font-bold text-purple-300 mb-2"> Email Order Restrictions </p>
+<p class="text-gray-200 text-base"> Maximum 40 different references and 20 units of the same reference per order. No promotions apply. </p>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-10">← Previous</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-12">Next →</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-10"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-12"> Next → </a>
 </div>
 </section>
 <!-- SECTION 12 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-12">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Email Orders – Checking Existing Customers
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Email Orders – Checking Existing Customers </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Check whether the customer already exists in SAP.
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP customer search process for ZTAC" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-23.png" title="Click to enlarge"/>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Check whether the customer already exists in SAP. </h3>
+<img alt="SAP customer search for a ZTAC order" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-23.png" title="Click to enlarge">
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="font-bold text-emerald-300 text-lg mb-1">
-                        Important
-                    </p>
-<p class="text-gray-200 text-lg">
-                        Note down the customer number to create the ZTAC order.
-                    </p>
+<p class="font-bold text-emerald-300 text-lg mb-1"> Important </p>
+<p class="text-gray-200 text-lg"> Note down the customer number to create the ZTAC order. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-11">← Previous</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-13">Next →</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-11"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-13"> Next → </a>
 </div>
 </section>
 <!-- SECTION 13 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-13">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Email Orders – Creating a New Customer
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Email Orders – Creating a New Customer </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-4 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP new customer creation form" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-24.png" title="Click to enlarge"/>
+<img alt="SAP new customer form" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-24.png" title="Click to enlarge">
 </div>
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
-                    Required Customer Details
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4"> Required Customer Details </h3>
 <ul class="space-y-2 text-gray-200 text-base">
-<li>• Title (Mr./Mrs.)</li>
-<li>• Surname and first name</li>
-<li>• Street and address</li>
-<li>• Postal code and city</li>
-<li>• Country and region</li>
-<li>• Tax identification number (DNI/CIF)</li>
-<li>• Telephone number</li>
-<li>• Email address</li>
+<li> • Title (Mr./Mrs.) </li>
+<li> • Surname and first name </li>
+<li> • Street and address </li>
+<li> • Postal code and city </li>
+<li> • Country and region </li>
+<li> • Tax identification number (DNI/CIF) </li>
+<li> • Telephone number </li>
+<li> • Email address </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="font-bold text-pink-300 mb-2">
-                        Create Order
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Select <strong>ZTAC</strong> for orders or
-                        <strong>ZTA3</strong> for claims if you are
-                        creating an order immediately afterwards.
-                    </p>
+<p class="font-bold text-pink-300 mb-2"> Create Order </p>
+<p class="text-gray-200 text-sm"> Select <strong> ZTAC </strong> for orders or <strong> ZTA3 </strong> for claims if you are creating an order immediately afterwards. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-12">← Previous</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-14">Next →</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-12"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-14"> Next → </a>
 </div>
 </section>
 <!-- SECTION 14 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-14">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Entering the ZTAC Order – Steps 1–5
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Entering the ZTAC Order – Steps 1–5 </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center">
-                    Follow the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center"> Follow the numbered steps in SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTAC order entry steps 1 to 5" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-25.png" title="Click to enlarge"/>
+<img alt="SAP ZTAC order entry, steps 1–5" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-25.png" title="Click to enlarge">
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-13">← Previous</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-15">Next →</a>
+<p class="text-sm text-gray-200 px-8 pb-4">Enter order type ZTAC, sales organization 2090 (Spain) or 2095 (Portugal), distribution channel 01 and division 01. Complete customer, payment terms, order reason, material references and quantities. Before saving, select Tratar → Modificación rápida → Motivo de Rechazo → Operación por aclarar to prevent unpaid dispatch.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-13"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-15"> Next → </a>
 </div>
 </section>
 <!-- SECTION 15 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-15">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Entering the ZTAC Order – Steps 6–9
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Entering the ZTAC Order – Steps 6–9 </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Continue following the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Continue following the numbered steps in SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTAC order entry steps 6 to 9" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-26.png" title="Click to enlarge"/>
+<img alt="SAP ZTAC order entry, steps 6–9" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-26.png" title="Click to enlarge">
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-14">← Previous</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-16">Next →</a>
+<p class="text-sm text-gray-200 px-8 pb-4">After saving, retain the order number. Open Detalles → Mensajes → Cabecera → Tratar, configure Datos Adicionales and Medios de comunicación as shown, then save to receive the quotation PDF. Send it with the Terms and Conditions.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-14"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-16"> Next → </a>
 </div>
 </section>
 <!-- SECTION 16 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-16">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Sending the Quotation to the Customer
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Sending the Quotation to the Customer </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center">
-                    Quotation + Terms &amp; Conditions
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 text-center"> Quotation + Terms &amp; Conditions </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="Customer email and order quotation with Terms and Conditions" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-27.png" title="Click to enlarge"/>
+<img alt="Quotation email with Terms and Conditions" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-27.png" title="Click to enlarge">
 </div>
-<p class="text-center text-gray-200 text-lg">
-                    Send the quotation and the Terms &amp; Conditions to the customer.
-                </p>
+<p class="text-center text-gray-200 text-lg"> Send the quotation and the Terms &amp; Conditions to the customer. </p>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-15">← Previous</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-17">Next →</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-15"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-17"> Next → </a>
 </div>
 </section>
 <!-- SECTION 17 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-17">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Customer Accepts the Quotation – Payment
-            </h2>
-<p class="text-gray-300 mt-2">The customer can complete the purchase using one of two payment methods.</p>
+<h2 class="text-3xl font-bold tracking-wide"> Customer Accepts the Quotation – Payment </h2>
+<p class="text-gray-300 mt-2"> The customer can complete the purchase using one of two payment methods. </p>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-purple-300 text-center mb-5">
-                    Bank Transfer
-                </h3>
+<h3 class="text-2xl font-bold text-purple-300 text-center mb-5"> Bank Transfer </h3>
 <ul class="space-y-4 text-gray-200 text-base">
-<li>• Email the customer with the bank account details, quotation and Terms &amp; Conditions.</li>
-<li>• Inform Anabel García at <strong>anabel_garcia@Playmobil.de</strong> about the expected payment.</li>
-<li>• Include the order number, customer number and amount to be paid.</li>
-<li>• Once payment is received, Anabel will confirm it by email.</li>
-<li>• Only then can you remove <strong>OPERATION TO BE CLARIFIED</strong> so the order can be dispatched.</li>
+<li> • Email the customer the approved bank details, quotation and Terms &amp; Conditions. </li>
+<li> • Inform <strong> Accounting </strong> about the expected payment. </li>
+<li> • Include the order number, customer number and amount to be paid. </li>
+<li> • Accounting will confirm receipt of payment by email. </li>
+<li> • Only then can you remove <strong> Operación por aclarar (operation to be clarified) </strong> so the order can be dispatched. </li>
 </ul>
 </div>
 <div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-purple-300 text-center mb-5">
-                    Payment by Link
-                </h3>
+<h3 class="text-2xl font-bold text-purple-300 text-center mb-5"> Payment by Link </h3>
 <ul class="space-y-5 text-gray-200 text-base">
-<li>• Modify the payment terms of the order.</li>
-<li>• Inform the customer that the payment link is valid for <strong>24 hours</strong>.</li>
-<li>• Inform Anabel García at <strong>anabel_garcia@Playmobil.de</strong> once the payment has been made.</li>
-<li>• Include the order number, customer number and payment amount.</li>
+<li> • Change the order payment terms to PBYL. </li>
+<li> • Inform the customer that the payment link is valid for <strong> 24 hours </strong> . </li>
+<li> • Inform <strong> Accounting </strong> once the payment has been made. </li>
+<li> • Include the order number, customer number and payment amount. </li>
 </ul>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-16">← Previous</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-18">Next →</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-16"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-18"> Next → </a>
 </div>
 </section>
 <!-- SECTION 18 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-18">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Modifying / Viewing Orders and Claims
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Modifying / Viewing Orders and Claims </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP order modification and viewing process" class="w-full max-h-[350px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-29.png" title="Click to enlarge"/>
-<p class="text-gray-200 text-center text-lg">
-                    Use this process to modify quantities or remove items from an existing order.
-                </p>
+<img alt="SAP order modification process" class="w-full max-h-[350px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-29.png" title="Click to enlarge">
+<p class="text-gray-200 text-center text-lg"> Use this process to change quantities or remove items from a manual order awaiting payment. </p>
 <div class="bg-gray-800 rounded-xl p-4">
-<p class="text-emerald-300 font-bold text-center text-lg mb-2">
-                        Important – OPERATION TO BE CLARIFIED
-                    </p>
-<p class="text-gray-200 text-center">
-                        After making changes, set the order back to
-                        <strong>OPERATION TO BE CLARIFIED</strong>.
-                    </p>
-<p class="text-red-300 text-center font-semibold mt-3">
-                        If this status is not applied, the order will be invoiced and dispatched.
-                    </p>
-<p class="text-gray-300 text-center text-sm mt-2">
-                        Only remove this status once Anabel García confirms the payment or the customer has paid by link.
-                    </p>
+<p class="text-emerald-300 font-bold text-center text-lg mb-2"> Important – Operación por aclarar </p>
+<p class="text-gray-200 text-center"> After making changes, set the order back to <strong> Operación por aclarar (operation to be clarified) </strong> . </p>
+<p class="text-red-300 text-center font-semibold mt-3"> If this status is not applied, the order will be invoiced and dispatched. </p>
+<p class="text-gray-300 text-center text-sm mt-2"> For bank transfers, remove the block only after Accounting confirms payment. PBYL validates automatically: do not remove it manually. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-17">← Previous</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-19">Next →</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-17"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-19"> Next → </a>
 </div>
 </section>
 <!-- SECTION 19 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-19">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Payment by Link – SAP Process
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Payment by Link – SAP Process </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center">
-                    Automatic Payment Email
-                </h3>
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP payment link process and automatic payment email" class="w-full max-h-[380px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-30.png" title="Click to enlarge"/>
+<h3 class="text-xl font-bold text-pink-300 text-center"> Automatic Payment Email </h3>
+<img alt="SAP payment-link procedure" class="w-full max-h-[380px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-30.png" title="Click to enlarge">
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="text-pink-300 font-bold text-lg mb-2">
-                        Important
-                    </p>
-<p class="text-gray-200 text-lg">
-                        When you save the changes, SAP automatically sends an email to the customer requesting payment.
-                    </p>
-<p class="text-gray-200 mt-2">
-                        The order is validated automatically. <strong>Do not remove OPERATION TO BE CLARIFIED.</strong>
+<p class="text-pink-300 font-bold text-lg mb-2"> Important </p>
+<p class="text-gray-200 text-lg"> When you save the changes, SAP automatically sends an email to the customer requesting payment. </p>
+<p class="text-gray-200 mt-2"> Payment-link orders validate automatically. <strong> Do not manually remove Operación por aclarar. </strong>
 </p>
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-18">← Previous</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-20">Next →</a>
+<p class="text-sm text-gray-200 px-8 pb-4">Before validation, change Condición de pago from DE01 to PBYL. Open Detalles → Cabecera → Tratar, select the last message, choose Repetir mensaje, review Medios de Comunicación and Dar salida, then return and save.</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-18"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-20"> Next → </a>
 </div>
 </section>
 <!-- SECTION 20 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-20">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                How to Respond to Customers
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> How to Respond to Customers </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-5xl bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-8 flex flex-col justify-center gap-6 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">01.</span>
-<p class="text-gray-200 text-lg">
-                        Use existing email templates from the
-                        <strong>Playmobil Ibérica Customer Service Manual</strong>.
-                    </p>
+<span class="text-purple-300 font-bold text-2xl"> 01. </span>
+<p class="text-gray-200 text-lg"> Use existing email templates from the <strong> Playmobil Ibérica Customer Service Manual </strong> . </p>
 </div>
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">02.</span>
-<p class="text-gray-200 text-lg">
-                        If no template is available or the case is specific, personalize your response.
-                    </p>
+<span class="text-purple-300 font-bold text-2xl"> 02. </span>
+<p class="text-gray-200 text-lg"> If no template is available or the case is specific, personalize your response. </p>
 </div>
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">03.</span>
-<div class="text-gray-200 text-lg">
-                        If there is a problem involving accidents, dangerous situations, missing parts or items that cannot be entered into SAP, report it to:
-
-                        <p class="text-purple-300 font-semibold mt-2">
-                            María Gómez
-                        </p>
-<p class="text-base">
-                            maria_gomez@playmobil.de
-                        </p>
+<span class="text-purple-300 font-bold text-2xl"> 03. </span>
+<div class="text-gray-200 text-lg"> Report accidents, dangerous situations and problems with parts not found or unavailable for SAP entry to the SAC supervisor: <p class="text-purple-300 font-semibold mt-2"> SAC supervisor </p>
+<p class="text-base"> Use the approved internal contact directory. </p>
 </div>
 </div>
 <div class="flex items-start gap-4">
-<span class="text-purple-300 font-bold text-2xl">04.</span>
-<p class="text-gray-200 text-lg">
-                        Once an email has been resolved, move it to the <strong>Sent</strong> folder.
-                    </p>
+<span class="text-purple-300 font-bold text-2xl"> 04. </span>
+<p class="text-gray-200 text-lg"> Once an email has been resolved, move it to the <strong> Enviado (Sent) </strong> . </p>
 </div>
 </div>
 </div>
-<div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-19">← Previous</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-21">Next →</a>
+<p class="text-base text-gray-200 px-8 pb-4">Use a professional, friendly tone. In Spanish, address the customer as tú and sign Tu equipo PLAYMOBIL (your PLAYMOBIL team).</p><div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-19"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-21"> Next → </a>
 </div>
 </section>
 <!-- SECTION 21 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-21">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Transport Incidents
-            </h2>
-<p class="text-gray-300 mt-2">
-                Lost or undelivered parcels, delivery delays, address changes and cancellations
-            </p>
+<h2 class="text-3xl font-bold tracking-wide"> Transport Incidents </h2>
+<p class="text-gray-300 mt-2"> Lost or undelivered parcels, delivery delays, address changes and cancellations </p>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-3 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">DHL</h3>
-<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
-<p class="text-gray-200 text-sm break-words">clientesparcel.spain@dhl.com</p>
-<p class="text-gray-200 text-sm break-words mb-5">complaints.dhl@dhl.com</p>
-<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
-<p class="text-gray-200 text-lg">+34 910 783 066</p>
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5"> DHL </h3>
+<p class="text-gray-400 text-sm font-semibold mb-2"> EMAIL </p>
+<p class="text-gray-200 text-sm break-words"> clientesparcel.spain@dhl.com </p>
+<p class="text-gray-200 text-sm break-words mb-5"> complaints.dhl@dhl.com </p>
+<p class="text-gray-400 text-sm font-semibold mb-2"> PHONE </p>
+<p class="text-gray-200 text-lg"> +34 910 783 066 </p>
 </div>
 <div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">CTT / Correos</h3>
-<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
-<p class="text-gray-200 text-sm break-words mb-5">correos@correos.com</p>
-<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
-<p class="text-gray-200 text-lg">+34 624 072 366</p>
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5"> CTT / Correos </h3>
+<p class="text-gray-400 text-sm font-semibold mb-2"> EMAIL </p>
+<p class="text-gray-200 text-sm break-words mb-5"> correos@correos.com </p>
+<p class="text-gray-400 text-sm font-semibold mb-2"> PHONE </p>
+<p class="text-gray-200 text-lg"> +34 624 072 366 </p>
 </div>
 <div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">UPS</h3>
-<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
-<p class="text-gray-200 text-sm break-words">preferredes@ups.com</p>
-<p class="text-gray-200 text-sm break-words">preferredde@ups.com</p>
-<p class="text-gray-200 text-sm break-words mb-5">custsvceses@ups.com</p>
-<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
-<p class="text-gray-200 text-lg">+34 902 88 88 40</p>
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5"> UPS </h3>
+<p class="text-gray-400 text-sm font-semibold mb-2"> EMAIL </p>
+<p class="text-gray-200 text-sm break-words"> preferredes@ups.com </p>
+<p class="text-gray-200 text-sm break-words"> preferredde@ups.com </p>
+<p class="text-gray-200 text-sm break-words mb-5"> custsvceses@ups.com </p>
+<p class="text-gray-400 text-sm font-semibold mb-2"> PHONE </p>
+<p class="text-gray-200 text-lg"> +34 902 88 88 40 </p>
 </div>
 </div>
 <div class="px-8 pb-5">
 <div class="bg-gray-900 rounded-xl p-4 text-center">
-<p class="text-emerald-300 font-bold mb-2">Important Notes</p>
-<p class="text-gray-200 text-sm">
-                    Address changes are not guaranteed. You can email the carrier to request a change, but it cannot be guaranteed.
-                </p>
-<p class="text-gray-200 text-sm mt-2">
-                    Cancellation deadline: 14 working days from the date the goods arrive at our facilities.
-                </p>
+<p class="text-emerald-300 font-bold mb-2"> Important Notes </p>
+<p class="text-gray-200 text-sm"> Confirmed addresses cannot be changed. Forward a request to the carrier without guaranteeing a change. </p>
+<p class="text-gray-200 text-sm mt-2"> The sources disagree on the cancellation deadline. Check approved Terms &amp; Conditions and ask the SAC supervisor. </p>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-20">← Previous</a>
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-22">Next →</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-20"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-22"> Next → </a>
 </div>
 </section>
 <!-- SECTION 22 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-22">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                Returns and Refunds
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> Returns and Refunds </h2>
 </div>
 <div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 mb-5">
-                    Reasons for Return
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 mb-5"> Reasons for Return </h3>
 <div class="space-y-5 text-gray-200 text-lg">
-<p><span class="text-pink-300 font-bold">01.</span> Customer error when placing the order or change of mind.</p>
-<p><span class="text-pink-300 font-bold">02.</span> Error during order preparation.</p>
-<p><span class="text-pink-300 font-bold">03.</span> Customer receives a damaged parcel.</p>
+<p><span class="text-pink-300 font-bold"> 01. </span> Customer error when placing the order or change of mind. </p>
+<p><span class="text-pink-300 font-bold"> 02. </span> Error during order preparation. </p>
+<p><span class="text-pink-300 font-bold"> 03. </span> Customer receives a damaged parcel. </p>
 </div>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="text-pink-300 font-bold mb-2">Return Form</p>
-<a class="text-blue-300 underline break-words" href="https://www.playmobil.com/es-es/devolucion/" target="_blank">
-                        PLAYMOBIL Returns Page
-                    </a>
+<p class="text-pink-300 font-bold mb-2"> Return Form </p>
+<a class="text-blue-300 underline break-words" href="https://www.playmobil.com/es-es/devolucion/" target="_blank" rel="noopener noreferrer"> PLAYMOBIL Returns Page </a>
 </div>
 </div>
 <div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 mb-5">
-                    Return Conditions
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 mb-5"> Return Conditions </h3>
 <ul class="space-y-4 text-gray-200 text-base">
-<li>• Return costs are covered by the customer.</li>
-<li>• If the order arrives damaged and the damage is reported at the time of delivery (as stated on the delivery receipt), PLAYMOBIL IBÉRICA covers the return costs.</li>
-<li>• The customer has <strong>14 working days</strong> to cancel the order.</li>
-<li>• Refunds are processed within <strong>14 working days</strong> from the date the goods arrive at our facilities.</li>
+<li> • Return costs are covered by the customer. </li>
+<li> • If the order arrives damaged and the damage is reported at the time of delivery (as stated on the delivery receipt), PLAYMOBIL IBÉRICA covers the return costs. </li>
+<li> • Withdrawal deadline: <strong></strong> Check approved Terms &amp; Conditions; the sources disagree. </li>
+<li> • The training describes refund processing within <strong> 14 working days </strong> from the date the goods arrive at our facilities. </li>
 </ul>
 <div class="mt-auto bg-gray-800 rounded-xl p-4">
-<p class="text-pink-300 font-bold mb-1">Important</p>
-<p class="text-gray-200 text-sm">
-                        Contact MRW for collections paid for by PLAYMOBIL IBÉRICA.
-                    </p>
+<p class="text-pink-300 font-bold mb-1"> Important </p>
+<p class="text-gray-200 text-sm"> Contact MRW for collections paid for by PLAYMOBIL IBÉRICA. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-21">← Previous</a>
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-23">Next →</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-21"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-23"> Next → </a>
 </div>
 </section>
 <!-- SECTION 23 - PURPLE -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-23">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                ZG2R – Credit Note (Steps 1–4)
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> ZG2R – Credit Note (Steps 1–4) </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-purple-300 text-center">
-                    Follow the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-purple-300 text-center"> Follow the numbered steps in SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZG2R credit note creation steps 1 to 4" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-34.png" title="Click to enlarge"/>
+<img alt="SAP ZG2R credit note, steps 1–4" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-34.png" title="Click to enlarge">
 </div>
 <div class="bg-gray-800 rounded-xl p-3 text-center">
-<p class="text-purple-300 font-bold">
-                        Important: Note down the document number.
-                    </p>
+<p class="text-purple-300 font-bold"> Important: Note down the document number. </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-22">← Previous</a>
-<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-24">Next →</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-22"> ← Previous </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-24"> Next → </a>
 </div>
 </section>
 <!-- SECTION 24 - EMERALD -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-24">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                ZG2R – Credit Note (Steps 5–8)
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> ZG2R – Credit Note (Steps 5–8) </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-emerald-300 text-center">
-                    Continue following the numbered steps in SAP
-                </h3>
+<h3 class="text-xl font-bold text-emerald-300 text-center"> Continue following the numbered steps in SAP </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZG2R credit note creation steps 5 to 8" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-35.png" title="Click to enlarge"/>
+<img alt="SAP ZG2R credit note, steps 5–8" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-35.png" title="Click to enlarge">
 </div>
 <div class="bg-gray-800 rounded-xl p-4 text-center">
-<p class="text-emerald-300 font-bold mb-2">
-                        After Creating the Credit Note
-                    </p>
-<p class="text-gray-200 text-sm">
-                        Note down the document number and inform
-                        <strong>anabel_garcia@playmobil.de</strong> about the credit note.
-                    </p>
-<p class="text-gray-300 text-sm mt-2">
-                        If you have any doubts, contact
-                        <strong>maria_gomez@playmobil.de</strong>.
-                    </p>
+<p class="text-emerald-300 font-bold mb-2"> After Creating the Credit Note </p>
+<p class="text-gray-200 text-sm"> Note down the document number and inform <strong> Accounting </strong> about the credit note. </p>
+<p class="text-gray-300 text-sm mt-2"> If uncertain, ask the SAC supervisor. <strong> Use the approved internal contact directory. </strong> . </p>
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-23">← Previous</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-23"> ← Previous </a>
 
-</div>
+<a href="#section-25" class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition">Next →</a></div>
 </section>
 <!-- SECTION 25 - PINK -->
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-25">
 <div class="text-center pt-7 pb-3 px-6">
-<h2 class="text-3xl font-bold tracking-wide">
-                SAP Shipment Tracking
-            </h2>
+<h2 class="text-3xl font-bold tracking-wide"> SAP Shipment Tracking </h2>
 </div>
 <div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
 <div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
-<h3 class="text-xl font-bold text-pink-300 text-center">
-                    Checking Shipment Status
-                </h3>
+<h3 class="text-xl font-bold text-pink-300 text-center"> Checking Shipment Status </h3>
 <div class="flex-1 min-h-0 flex items-center justify-center">
-<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP shipment tracking and carrier tracking process" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-36.png" title="Click to enlarge"/>
+<img alt="SAP shipment and carrier tracking" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-36.png" title="Click to enlarge">
 </div>
 </div>
 </div>
 <div class="flex justify-between px-8 pb-5">
-<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-24">← Previous</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-24"> ← Previous </a>
 
-<a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26">Next →</a></div>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26"> Next → </a></div>
 </section>
 <section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-26">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Daily Tasks – Calls and Emails</h1></div>
-<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Phone and email support</h2><p class="text-lg">Respond to telephone and email enquiries politely and efficiently, resolving the customer’s questions.</p><p class="text-lg mt-4">Know the website <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener" target="_blank">www.playmobil.es</a> thoroughly and visit it regularly to stay up to date with promotions and new products.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">What to check on the website</h2><p class="text-lg">The main banner on the homepage highlights the main promotion and other news.</p><p class="text-lg mt-4">Promotion conditions are especially important because they generate many customer questions.</p><p class="text-lg mt-4">Enquiries may concern order delivery, products, promotions, spare parts or returns. These topics are covered throughout the training.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-25">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-27">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Promotions and Telephone Enquiries</h1></div>
-<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3">Promotions are usually not combinable with</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Individual spare parts or replacement parts – <a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/piezas-sueltas-manuales-de-instrucciones/" rel="noopener" target="_blank">spare parts and instructions</a></li><li>Other promotions and discount codes</li><li><a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/resultado-de-la-busqueda/?q=packs+promocionales" rel="noopener" target="_blank">Promotional packs</a></li><li>New products launched within the last two months</li></ul></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3">What we cannot do by phone</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Request personal data to place an order or process a complaint. The customer must use <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener" target="_blank">the website</a> or email <a class="text-sky-300 underline" href="mailto:clientes@playmobil.de">clientes@playmobil.de</a>.</li><li>Quote product prices. Direct customers to the website.</li><li>Provide spare-part reference numbers. Ask the customer to email us or refer them to the website’s assembly instructions.</li></ul><p class="text-amber-300 font-semibold mt-4">These enquiries are always handled by email.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-28">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Essential Information for the SAC</h1></div>
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Delivery</h2><p>Regular orders: <b>6–8 working days</b>.</p><p class="mt-2">Spare-parts orders: up to <b>10 weeks</b>.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Payment</h2><p>Website: credit card and PayPal.</p><p class="mt-2">Email orders: bank transfer or credit card.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Returns and changes</h2><p>Returns: <b>14 working days</b> from receipt.</p><p class="mt-2">Confirmed orders and addresses cannot be modified.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Shipping costs</h2><p>Peninsula and Balearic Islands: <b>€9</b>; free over €60.</p><p class="mt-2">Canary Islands, Ceuta and Melilla: <b>€22</b>; free over €150.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Email orders</h2><p>Orders placed by email are not eligible for promotions.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Individual figure parts</h2><p>It is not possible to order individual parts from the same figure, such as wigs, beards or arms.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-29">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">B) SAC Statistics</h1></div>
-<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 shadow-lg w-full" data-reveal=""><p class="text-xl mb-5">Every day, we monitor the emails received. Open the following folder:</p><p class="text-xl font-bold text-sky-300 mb-7 break-all">P:\ATENCION_AL_CLIENTE\ESTADISTICAS EMAIL SAC</p><div class="grid md:grid-cols-3 gap-4"><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Emails in inbox</h2><p>Record the total number of emails visible in the inbox, without opening them, first thing in the morning.</p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Emails received</h2><p>Record the number of emails received during the previous day, using the relevant Outlook search.</p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Orders and complaints</h2><p>After reading and classifying all emails, record how many relate to orders and complaints.</p></div></div></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-30">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">C) Checking Blocked Orders in SAP</h1></div>
-<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Initial search – VA14L</h2><p class="text-lg">Use SAP transaction <b class="text-sky-300">VA14L</b> to check for high-value blocked orders in Spain and Portugal.</p><p class="mt-4">Under <b>Header delivery block</b>, first search using:</p><ul class="list-disc pl-6 mt-2 space-y-2 text-lg"><li>Delivery block: <b>Z1</b></li><li>Sales organisation: <b>2090</b> (Spain)</li><li>Distribution channel: <b>01</b></li><li>Division: <b>01</b></li></ul><p class="mt-4">Click the clock icon to display any blocked orders.</p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Removing the block</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Open the order by clicking its number in the results table.</li><li>In <b>Delivery block</b>, remove the <b>Amount check</b> option.</li><li>Save the order.</li><li>Close the order, return to the start page and click the green Save button.</li></ol><p class="mt-4 text-amber-300 font-semibold">Repeat the search for Z0 as well as Z1.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-31">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">C) Blocked Orders – Portugal Check</h1></div>
-<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 w-full" data-reveal=""><h2 class="text-2xl font-bold mb-5">Repeat the same checks for Portugal</h2><p class="text-lg mb-6">Run both delivery-block searches using the Portuguese sales organisation:</p><div class="grid md:grid-cols-2 gap-4"><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300">Spain</p><p class="text-3xl font-bold mt-2">2090</p><p class="mt-3">Z1 and Z0</p></div><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300">Portugal</p><p class="text-3xl font-bold mt-2">2095</p><p class="mt-3">Z1 and Z0</p></div></div><p class="text-xl font-bold text-emerald-300 mt-7">Daily summary: 2090 – Z1 and Z0; 2095 – Z1 and Z0.</p><p class="text-gray-300 mt-3">For each search, click the clock icon, review the results and remove the block when required.</p></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-32">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">D) Accounting Emails – Blocked Customers</h1></div>
-<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Daily accounting reports</h2><p class="text-lg">We receive automated accounting report emails every day. Only two reports require action:</p><ul class="list-disc pl-6 mt-4 space-y-3 text-lg"><li>Customers who must be blocked because they entered false or incorrect order details, breaching the Terms and Conditions.</li><li>Cancellation and refund reports returned to Germany.</li></ul><p class="mt-4">Archive the other reports in the Accounting folder in Outlook.</p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Blocking a customer</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Open the report email and review the attached PDF listing the customers to block.</li><li>If the message <b>“Error en el bloque de la Contraparte”</b> appears, email Accounting at <a class="text-sky-300 underline" href="mailto:anabel_garcia@playmobil.de">anabel_garcia@playmobil.de</a> and ask them to block the customers.</li><li>Email the affected customers to inform them that their accounts have been disabled.</li><li>Keep the previous day’s sent email in the Accounting folder marked as unread. Forward it with all customers and SAC in BCC so it is easy to locate the following day.</li></ol></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-33">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">D) Cancellation and Refund Reports</h1></div>
-<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Verify the cancellation</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Open the cancellation/refund report from Germany.</li><li>In SAP, run transaction <b>VA05</b> for the customer number.</li><li>Extend the search date to include the previous two months.</li><li>Check whether the customer has the relevant <b>ZTAI</b> order and <b>RE</b> return created by Germany.</li></ol></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Decide what to report to Accounting</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>If the ZTAI order and RE return are correct, forward the report to Accounting and ask them to process the refund.</li><li>If a <b>ZTA3</b> exists with the same order contents, the refund is not correct because a free replacement shipment was already sent.</li><li>If we created a complaint and sent the goods, tell Accounting not to refund customer <b>noXXXX</b>; we will issue an <b>L2</b> invoice to compensate the account.</li></ul><p class="mt-4 text-amber-300">For the L2 process, see <b>J) Rectificación abonos – Facturas L2</b> and record it in <b>MARKETING\ABONOS CONTABILIDAD_01</b>.</p></article></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-34">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Priorities SAC – Christmas Period</h1></div>
-<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal="">General priorities: provide fast, high-quality solutions; inform customers about shipment status to ensure delivery and prevent incidents; and guarantee after-sales service.</p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-2">November – January</h2><p class="text-gray-300 mb-5">During the Christmas period, priorities are:</p><div class="grid md:grid-cols-3 gap-4"><div class="bg-rose-950/60 rounded-xl p-5"><p class="text-sm uppercase">Priority 1</p><h3 class="text-xl font-bold mt-2">Orders and delivery</h3><p class="mt-2">Order and delivery enquiries, tracking numbers, promotions and offers.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Priority 2</p><h3 class="text-xl font-bold mt-2">After-sales service</h3><p class="mt-2">Missing or defective parts, spare-part orders and returns.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Priority 3</p><h3 class="text-xl font-bold mt-2">Other requests</h3><p class="mt-2">All other customer requests.</p></div></div></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-35">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-35">
-<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Priorities SAC – Rest of the Year</h1></div>
-<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal="">From February to October, after-sales service becomes the main priority.</p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-5">February – October</h2><div class="grid md:grid-cols-3 gap-4"><div class="bg-emerald-950/60 rounded-xl p-5"><p class="text-sm uppercase">Priority 1</p><h3 class="text-xl font-bold mt-2">After-sales service</h3><p class="mt-2">Missing or defective parts, spare-part orders and returns.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Priority 2</p><h3 class="text-xl font-bold mt-2">Orders and delivery</h3><p class="mt-2">Order and delivery enquiries, tracking numbers, promotions and offers.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Priority 3</p><h3 class="text-xl font-bold mt-2">Other requests</h3><p class="mt-2">All other customer requests.</p></div></div></div></div>
-<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34">← Previous</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-36">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col items-center justify-center text-center p-8 bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-36"><h1 class="opacity-0 translate-y-5 transition-all duration-500 text-4xl md:text-6xl font-bold" data-reveal="">Thanks for watching!</h1><p class="mt-8 text-xl text-gray-300">Designed by Bojan Dj.</p><a class="mt-10 bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1">Back to start</a></section></main>
-<button @click="menuOpen = !menuOpen" class="fixed top-4 right-4 z-40 rounded-xl bg-indigo-700 hover:bg-indigo-600 px-4 py-3 shadow-xl font-semibold" type="button">☰ Sections</button>
-<div @click.self="menuOpen=false" class="fixed inset-0 z-50 bg-black/70" x-cloak="" x-show="menuOpen" x-transition.opacity="">
-<aside class="absolute right-0 top-0 h-full w-full max-w-xl bg-gray-950 border-l border-gray-700 shadow-2xl flex flex-col" x-transition:enter="transition transform ease-out duration-300" x-transition:enter-end="translate-x-0" x-transition:enter-start="translate-x-full" x-transition:leave="transition transform ease-in duration-200" x-transition:leave-end="translate-x-full" x-transition:leave-start="translate-x-0">
-<div class="flex items-center justify-between p-5 border-b border-gray-700"><h2 class="text-2xl font-bold">Sections</h2><button @click="menuOpen=false" aria-label="Close" class="text-3xl px-3">×</button></div>
-<div class="flex gap-3 p-4 border-b border-gray-700"><a @click.prevent="location.href='index.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="index.html">🇬🇧 EN</a><a @click.prevent="location.href='es.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="es.html">🇪🇸 ES</a><a @click.prevent="location.href='sr.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="sr.html">🇷🇸 SR</a></div>
-<nav class="overflow-y-auto p-4 space-y-2" id="section-navigation"></nav>
-</aside>
-</div>
-<div @click.self="closeLightbox()" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-3 md:p-8" x-cloak="" x-show="lightboxSrc" x-transition.opacity="">
-<button @click="closeLightbox()" aria-label="Close image" class="absolute top-4 right-5 z-[101] text-white text-5xl leading-none bg-black/50 rounded-full w-14 h-14">×</button>
-<img :src="lightboxSrc" alt="Enlarged screenshot" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"/>
-</div><script>function presentationApp(){return {menuOpen:false,lightboxSrc:null,openLightbox(src){this.lightboxSrc=src;},closeLightbox(){this.lightboxSrc=null;},closeOverlays(){this.menuOpen=false;this.lightboxSrc=null;}}} document.addEventListener('alpine:init',()=>{const nav=document.getElementById('section-navigation'); if(!nav)return; const labels=[...document.querySelectorAll('main > section')].map((s)=>({id:s.id,title:s.querySelector('h1,h2')?.innerText?.trim()||s.id})); labels.forEach((item)=>{const a=document.createElement('a');a.href='#'+item.id;a.textContent=item.title;a.className='block rounded-lg px-4 py-3 bg-gray-900 hover:bg-indigo-900 border border-gray-800';a.addEventListener('click',()=>{document.getElementById(item.id)?.scrollIntoView({behavior:'smooth'});Alpine.$data(document.body).menuOpen=false;});nav.appendChild(a);});});</script></body>
-</html>
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Daily Tasks – Calls and Emails </h1></div>
+<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4"> Phone and email support </h2><p class="text-lg"> Respond to telephone and email enquiries politely and efficiently, resolving the customer’s questions. </p><p class="text-lg mt-4"> Know the website <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener noreferrer" target="_blank"> www.playmobil.es </a> thoroughly and visit it regularly to stay up to date with promotions and new products. </p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4"> What to check on the website </h2><p class="text-lg"> The main banner on the homepage highlights the main promotion and other news. </p><p class="text-lg mt-4"> Promotion conditions are especially important because they generate many customer questions. </p><p class="text-lg mt-4"> Enquiries may concern order delivery, products, promotions, spare parts or returns. These topics are covered throughout the training. </p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-25"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-27">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Promotions and Telephone Enquiries </h1></div>
+<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Promotions are usually not combinable with </h2><ul class="list-disc pl-6 space-y-3 text-lg"><li> Individual spare parts or replacement parts – <a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/piezas-sueltas-manuales-de-instrucciones/" rel="noopener noreferrer" target="_blank"> spare parts and instructions </a></li><li> Other promotions and discount codes </li><li><a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/resultado-de-la-busqueda/?q=packs+promocionales" rel="noopener noreferrer" target="_blank"> Promotional packs </a></li><li> New products launched within the last two months </li></ul></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3"> What we cannot do by phone </h2><ul class="list-disc pl-6 space-y-3 text-lg"><li> Request personal data to place an order or process a complaint. The customer must use <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener noreferrer" target="_blank"> the website </a> or email <a class="text-sky-300 underline" href="mailto:clientes@playmobil.de"> clientes@playmobil.de </a> . </li><li> Quote product prices. Direct customers to the website. </li><li> Provide spare-part reference numbers. Ask the customer to email us or refer them to the website’s assembly instructions. </li></ul><p class="text-amber-300 font-semibold mt-4"> These enquiries are always handled by email. </p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-28">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Essential Information for the SAC </h1></div>
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Delivery </h2><p> Regular orders: <b> 6–8 working days </b> . </p><p class="mt-2"> Spare-parts orders: up to <b> 10 weeks </b> . </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Payment </h2><p> Website: credit card and PayPal. </p><p class="mt-2"> Email orders: bank transfer or card via payment link. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Returns and changes </h2><p> Withdrawal deadline: <b></b> Check approved Terms &amp; Conditions; the sources disagree. </p><p class="mt-2"> Confirmed orders and addresses cannot be modified. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Shipping costs </h2><p> Peninsula and Balearic Islands: <b> €9 </b> ; free-shipping promotions for purchases over €60 are subject to conditions. </p><p class="mt-2"> Canary Islands, Ceuta and Melilla: <b> €22 </b> ; free shipping for purchases over €150, subject to conditions. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Email orders </h2><p> Orders placed by email are not eligible for promotions. </p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2"> Individual figure parts </h2><p> It is not possible to order individual parts from the same figure, such as wigs, beards or arms. </p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-29">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> B) SAC Statistics </h1></div>
+<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 shadow-lg w-full" data-reveal=""><p class="text-xl mb-5"> Every day, we monitor the emails received. Open the following folder: </p><p class="text-xl font-bold text-sky-300 mb-7 break-all"> P:\ATENCION_AL_CLIENTE\ESTADISTICAS EMAIL SAC </p><div class="grid md:grid-cols-3 gap-4"><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2"> Emails in inbox </h2><p> Record the total number of emails visible in the inbox, without opening them, first thing in the morning. </p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2"> Emails received </h2><p> Record the number of emails received during the previous day, using the relevant Outlook search. </p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2"> Orders and complaints </h2><p> After reading and classifying all emails, record how many relate to orders and complaints. </p></div></div></div></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/sac-statistics.png" alt="SAC statistics: record inbox, received, order and claim counts." loading="lazy" width="900" height="450"><figcaption>SAC statistics: record inbox, received, order and claim counts. Manual, page 3.</figcaption></figure><figure data-reveal=""><img src="assets/manual/outlook-previous-day-search.png" alt="Outlook: use the Ayer filter to count messages received yesterday." loading="lazy" width="900" height="450"><figcaption>Outlook: use the Ayer filter to count messages received yesterday. Manual, page 4.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-30">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> C) Checking Blocked Orders in SAP </h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Initial search – VA14L </h2><p class="text-lg"> Use SAP transaction <b class="text-sky-300"> VA14L </b> to check for high-value blocked orders in Spain and Portugal. </p><p class="mt-4"> Under <b> Bloqueo de entrega cabecera (header delivery block) </b> , first search using: </p><ul class="list-disc pl-6 mt-2 space-y-2 text-lg"><li> Delivery block: <b> Z1 </b></li><li> Sales organisation: <b> 2090 </b> (Spain) </li><li> Distribution channel: <b> 01 </b></li><li> Division: <b> 01 </b></li></ul><p class="mt-4"> Click the clock icon to display any blocked orders. </p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Removing the block </h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li> Open the order by clicking its number in the results table. </li><li> In <b> Bloqueo entrega (delivery block) </b> , remove the <b> Comprobación importe (amount check) </b> option. </li><li> Save the order. </li><li> Close the order, return to the start page and click the green Save button. </li></ol><p class="mt-4 text-amber-300 font-semibold"> Repeat the search for Z0 as well as Z1. </p></article></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/va14l-command.png" alt="Enter transaction VA14L." loading="lazy" width="900" height="450"><figcaption>Enter transaction VA14L. Manual, page 4.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-search-parameters.png" alt="VA14L: Z1, sales organization 2090, channel 01 and division 01." loading="lazy" width="900" height="450"><figcaption>VA14L: Z1, sales organization 2090, channel 01 and division 01. Manual, page 4.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-blocked-orders.png" alt="Review blocked orders; customer data is redacted." loading="lazy" width="900" height="450"><figcaption>Review blocked orders; customer data is redacted. Manual, page 5.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-remove-delivery-block.png" alt="Bloqueo entrega: remove Comprobación importe after reviewing the order." loading="lazy" width="900" height="450"><figcaption>Bloqueo entrega: remove Comprobación importe after reviewing the order. Manual, page 5.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va14l-save-modified-order.png" alt="Save the modified order and return using the indicated control." loading="lazy" width="900" height="450"><figcaption>Save the modified order and return using the indicated control. Manual, page 5.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-31">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> C) Blocked Orders – Portugal Check </h1></div>
+<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 w-full" data-reveal=""><h2 class="text-2xl font-bold mb-5"> Repeat the same checks for Portugal </h2><p class="text-lg mb-6"> Run both delivery-block searches using the Portuguese sales organisation: </p><div class="grid md:grid-cols-2 gap-4"><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300"> Spain </p><p class="text-3xl font-bold mt-2"> 2090 </p><p class="mt-3"> Z1 and Z0 </p></div><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300"> Portugal </p><p class="text-3xl font-bold mt-2"> 2095 </p><p class="mt-3"> Z1 and Z0 </p></div></div><p class="text-xl font-bold text-emerald-300 mt-7"> Daily summary: 2090 – Z1 and Z0; 2095 – Z1 and Z0. </p><p class="text-gray-300 mt-3"> For each search, click the clock icon, review the results and remove the block when required. </p></div></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/va14l-portugal-z0.png" alt="Portugal: organization 2095, Z0 example. Repeat the check for Z1." loading="lazy" width="900" height="450"><figcaption>Portugal: organization 2095, Z0 example. Repeat the check for Z1. Manual, page 6.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-32">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> D) Accounting Emails – Blocked Customers </h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Daily accounting reports </h2><p class="text-lg"> We receive automated accounting report emails every day. Only two reports require action: </p><ul class="list-disc pl-6 mt-4 space-y-3 text-lg"><li> Customers who must be blocked because they entered false or incorrect order details, breaching the Terms and Conditions. </li><li> Cancellation and credit-note reports for orders returned to Germany. </li></ul><p class="mt-4"> Archive the other reports in the Accounting folder in Outlook. </p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Blocking a customer </h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li> Open the report email and review the attached PDF listing the customers to block. </li><li> If the message <b> “Error en el bloque de la Contraparte” </b> appears, email the <span class="text-sky-300 underline"> Accounting </span> team to request the customer blocks. </li><li> Email the affected customers to inform them that their accounts have been disabled. </li><li> Keep the previous day’s sent email in the Accounting folder marked as unread. Forward it with all customers and SAC in BCC so it is easy to locate the following day. </li></ol></article></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/accounting-report-inbox.png" alt="Daily Accounting report types; private sender and date data removed." loading="lazy" width="900" height="450"><figcaption>Daily Accounting report types; private sender and date data removed. Manual, page 6.</figcaption></figure><figure data-reveal=""><img src="assets/manual/accounting-block-report.png" alt="Counterparty error report: request the customer block from Accounting." loading="lazy" width="900" height="450"><figcaption>Counterparty error report: request the customer block from Accounting. Manual, page 7.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-33">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> D) Cancellation and Refund Reports </h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Verify the cancellation </h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li> Open the cancellation/refund report from Germany. </li><li> In SAP, run transaction <b> VA05 </b> for the customer number. </li><li> Extend the search date to include the previous two months. </li><li> Check whether the customer has the relevant <b> ZTAI </b> order and <b> RE </b> return created by Germany. </li></ol></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3"> Decide what to report to Accounting </h2><ul class="list-disc pl-6 space-y-3 text-lg"><li> If the ZTAI order and RE return are correct and no earlier compensation exists, forward the report to Accounting and request the refund. </li><li> If a <b> ZTA3 </b> exists with the same contents and the free replacement has been dispatched, this refund is not appropriate. </li><li> If the claim shipment has already been sent, tell Accounting not to refund the <b> affected customer </b> ; issue an <b> L2 </b> invoice to compensate the account. </li></ul><p class="mt-4 text-amber-300"> For the L2 process, see <b> J) Rectificación abonos – Facturas L2 (and section 37) </b> and record it in <b> MARKETING\ABONOS CONTABILIDAD_01 </b> . </p></article></div>
+<div class="gallery"><figure data-reveal=""><img src="assets/manual/cancellation-report.png" alt="Cancellation report: verify the documents before requesting any refund." loading="lazy" width="900" height="450"><figcaption>Cancellation report: verify the documents before requesting any refund. Manual, page 8.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va05-cancellation-check.png" alt="Use VA05 and extend the search to the previous two months." loading="lazy" width="900" height="450"><figcaption>Use VA05 and extend the search to the previous two months. Manual, page 8.</figcaption></figure><figure data-reveal=""><img src="assets/manual/va05-refund-verification.png" alt="Compare ZTAI and RE with the replacement and credit history." loading="lazy" width="900" height="450"><figcaption>Compare ZTAI and RE with the replacement and credit history. Manual, page 9.</figcaption></figure></div><div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-34">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Priorities SAC – Christmas Period </h1></div>
+<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal=""> General priorities: provide fast, high-quality solutions; inform customers about shipment status to ensure delivery and prevent incidents; and guarantee after-sales service. </p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-2"> November – January </h2><p class="text-gray-300 mb-5"> During the Christmas period, priorities are: </p><div class="grid md:grid-cols-3 gap-4"><div class="bg-rose-950/60 rounded-xl p-5"><p class="text-sm uppercase"> Priority 1 </p><h3 class="text-xl font-bold mt-2"> Orders and delivery </h3><p class="mt-2"> Order and delivery enquiries, tracking numbers, promotions and offers. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Priority 2 </p><h3 class="text-xl font-bold mt-2"> After-sales service </h3><p class="mt-2"> Missing or defective parts, spare-part orders and returns. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Priority 3 </p><h3 class="text-xl font-bold mt-2"> Other requests </h3><p class="mt-2"> All other customer requests. </p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-35"> Next → </a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-35">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold"> Priorities SAC – Rest of the Year </h1></div>
+<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal=""> From February to October, after-sales service becomes the main priority. </p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-5"> February – October </h2><div class="grid md:grid-cols-3 gap-4"><div class="bg-emerald-950/60 rounded-xl p-5"><p class="text-sm uppercase"> Priority 1 </p><h3 class="text-xl font-bold mt-2"> After-sales service </h3><p class="mt-2"> Missing or defective parts, spare-part orders and returns. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Priority 2 </p><h3 class="text-xl font-bold mt-2"> Orders and delivery </h3><p class="mt-2"> Order and delivery enquiries, tracking numbers, promotions and offers. </p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase"> Priority 3 </p><h3 class="text-xl font-bold mt-2"> Other requests </h3><p class="mt-2"> All other customer requests. </p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34"> ← Previous </a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-37"> Next → </a></div></section><section id="section-37" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">L2 invoices – correcting a credit note</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">When to use L2</h2><p class="text-base mt-4">L2 corrects an incorrect or duplicate credit note so the customer receives only the appropriate refund.</p><p class="text-base mt-4">If a free ZTA3 replacement with the same contents was dispatched, tell Accounting not to refund and follow the L2 correction procedure. Record the correction in ABONOS CONTABILIDAD_01.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Documented sequence</h2><p class="text-base mt-4">1. In Crear pedido (create order), select L2. Choose Crear con referencia (create with reference) and enter the original purchase invoice.</p><p class="text-base mt-4">2. Choose Tomar (copy). Set Motivo de pedido (order reason) to Razón devolución desconocida (unknown return reason), then save.</p><p class="text-base mt-4">3. Record the generated document number. Open it in Modificar pedido (change order) and save to obtain the invoice number. Coordinate the correction with Accounting.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Source: January 2026 manual, pages 27–29; 9</p><div class="flex justify-between p-5"><a href="#section-35" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Previous</a><a href="#section-38" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Next →</a></div></section><section id="section-38" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Demandware – an order is missing from SAP</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Investigate the order</h2><p class="text-base mt-4">Use advanced search in Demandware / Salesforce and search by the customer’s email to review their order history.</p><p class="text-base mt-4">ERROR and CREADO orders were not recorded correctly and cannot be processed or dispatched. Check whether the customer is blocked in SAP or whether billing details differ between earlier orders.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Explain and escalate</h2><p class="text-base mt-4">If the account is blocked, explain that the order cannot be dispatched. If there is a system error without an account block, offer a manual quotation and payment by transfer or link.</p><p class="text-base mt-4">Financial handling is unresolved in the manual: page 36 requests a refund, while page 37 describes an authorization hold. Ask Accounting to verify the actual payment status; do not promise a refund or its timing.</p><p class="text-base mt-4">Manual recovery mentions website conditions, but the newer training excludes promotions on email orders. Escalate any promotion exception before promising it.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Source: January 2026 manual, pages 36–37; October 2026 training, pages 16</p><div class="flex justify-between p-5"><a href="#section-37" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Previous</a><a href="#section-39" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Next →</a></div></section><section id="section-39" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Reactivating a discount code</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Check the specific situation</h2><p class="text-base mt-4">A single-use code may become inactive after an attempted order that was not confirmed. This procedure is for that documented situation.</p><p class="text-base mt-4">In Demandware, open Pedidos (orders) and search using the customer’s email. Review the order history.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Reactivate and save</h2><p class="text-base mt-4">Open the latest relevant order marked ERROR or CREADO.</p><p class="text-base mt-4">In ESTADO DE PEDIDO (order status), select error and save. This reactivates the code in the documented case.</p><p class="text-base mt-4">Do not apply this procedure to a completed purchase or promise that a code is eligible for every product. Check the promotion conditions.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Source: January 2026 manual, pages 38</p><div class="flex justify-between p-5"><a href="#section-38" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Previous</a><a href="#section-40" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Next →</a></div></section><section id="section-40" class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]"><div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Order validation and operational exceptions</h1></div><div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Validate according to payment method</h2><p class="text-base mt-4">Bank transfer: wait for Accounting confirmation, then open Modificar pedido (change order), remove Operación por aclarar and save.</p><p class="text-base mt-4">Payment link (PBYL): validation is automatic. Do not remove Operación por aclarar manually. Restore the block after editing an unpaid manual order.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Check the exceptions</h2><p class="text-base mt-4">Claims usually cannot be changed after saving. A change may still be possible immediately after saving, before the delivery document is processed.</p><p class="text-base mt-4">A customer number beginning 130 belongs to a shop (B2B); do not use it for a consumer claim. Check for the appropriate consumer account before creating a new one.</p><p class="text-base mt-4">For a blocked customer requiring a credit note, ask Accounting to remove the block temporarily and to restore it afterwards. Surprise-bag spare parts cannot be ordered.</p><p class="text-base mt-4">Webshops are B2C for Spain and Portugal. Handle consumer claims submitted through shops; route other B2B claims to Sales Administration.</p></article></div><p class="text-sm text-gray-300 px-6 pb-3">Source: January 2026 manual, pages 14, 22, 24, 31, 38; October 2026 training, pages 3, 28–30</p><div class="flex justify-between p-5"><a href="#section-39" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">← Previous</a><a href="#section-36" class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg">Next →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col items-center justify-center text-center p-8 bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-36"><h1 class="opacity-0 translate-y-5 transition-all duration-500 text-4xl md:text-6xl font-bold" data-reveal=""> Thanks for watching! </h1><p class="mt-8 text-xl text-gray-300"> Designed by Bojan Dj. </p><a class="mt-10 bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1"> Back to start </a></section></main>
+
+
+
+<noscript>JavaScript is required / Se necesita JavaScript / Potreban je JavaScript.</noscript>
+</body></html>
