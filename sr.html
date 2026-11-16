@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PLAYMOBIL – SAC Training</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body @keydown.escape.window="closeOverlays()" class="bg-gray-800 text-white" x-data="presentationApp()">
+<main class="h-dvh overflow-y-auto snap-y snap-mandatory scroll-smooth" x-data="" x-init="
+        $nextTick(() =&gt; {
+            const observer = new IntersectionObserver((entries) =&gt; {
+                entries.forEach(entry =&gt; {
+                    if (!entry.isIntersecting) return;
+
+                    const cards = entry.target.querySelectorAll('[data-reveal]');
+
+                    cards.forEach((card, index) =&gt; {
+                        card.style.transitionDelay = `${index * 120}ms`;
+
+                        requestAnimationFrame(() =&gt; {
+                            card.classList.remove('opacity-0', 'translate-y-5');
+                        });
+                    });
+
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                root: $el,
+                threshold: 0.15
+            });
+
+            $el.querySelectorAll('section').forEach(section =&gt; {
+                observer.observe(section);
+            });
+        });
+    ">
+<!-- SECTION 1 - WELCOME -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-1">
+<div class="flex-1 flex items-center justify-center text-center p-6">
+<h1 class="opacity-0 translate-y-5 transition-all duration-500 ease-out text-4xl md:text-6xl font-bold" data-reveal="">
+                Dobrodošli na moju PLAYMOBIL prezentaciju
+            </h1>
+</div>
+<div class="flex-1 flex items-center justify-center text-center p-6">
+
+</div>
+<div class="flex justify-end p-6">
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-2">
+                Sledeća ↓
+            </a>
+</div>
+</section>
+<!-- SECTION 2 - DELIVERY TIME -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-2">
+<div class="flex-none text-center py-8 px-4">
+<h1 class="text-3xl md:text-4xl font-bold">
+                Rokovi isporuke i troškovi dostave
+            </h1>
+</div>
+<div class="flex-1 min-h-0 grid grid-rows-2 gap-5 px-6 pb-4">
+<!-- CARD 1 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 p-6 rounded-2xl shadow-lg grid grid-cols-3 gap-3 items-center text-center" data-reveal="">
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
+                    Surtido regular
+                </p>
+<p class="text-2xl md:text-4xl">→</p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
+                    6-8 radnih dana
+                </p>
+</div>
+<!-- CARD 2 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 p-6 rounded-2xl shadow-lg grid grid-cols-3 gap-3 items-center text-center" data-reveal="">
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
+                    Piezas sueltas
+                </p>
+<p class="text-2xl md:text-4xl">→</p>
+<p class="rounded-full p-4 text-xl md:text-3xl font-bold bg-gray-800 hover:bg-indigo-900">
+                    Up to 10 weeks
+                </p>
+</div>
+</div>
+<div class="flex justify-between p-6">
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1">
+                ↑ Prethodna
+            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-3">
+                Sledeća ↓
+            </a>
+</div>
+</section>
+<!-- SECTION 3 - SHIPPING COSTS -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-3">
+<div class="flex-none text-center py-8 px-4">
+<h1 class="text-3xl md:text-4xl font-bold">
+                Troškovi dostave
+            </h1>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-3 gap-5 px-6 pb-4">
+<!-- CARD 1 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
+                    España / Portugal
+                </p>
+<p class="text-xl md:text-3xl font-semibold">
+                    9 EUR
+                </p>
+<p class="text-lg md:text-xl">
+                    Besplatna dostava za iznos preko 60 EUR
+                </p>
+</div>
+<!-- CARD 2 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
+                    Canarias / Ceuta / Melilla
+                </p>
+<p class="text-xl md:text-3xl font-semibold">
+                    22 EUR
+                </p>
+<p class="text-lg md:text-xl">
+                    Besplatna dostava za iznos preko 150 EUR
+                </p>
+</div>
+<!-- CARD 3 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-center items-center text-center gap-6" data-reveal="">
+<p class="rounded-xl bg-gray-800 p-4 text-xl md:text-2xl font-bold hover:bg-emerald-900 w-full">
+                    Azores / Madeira
+                </p>
+<p class="text-xl md:text-3xl font-semibold">
+                    22 EUR
+                </p>
+<p class="text-lg md:text-xl">
+                    Besplatna dostava za iznos preko 150 EUR
+                </p>
+</div>
+</div>
+<div class="flex justify-between p-6">
+<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-2">
+                ↑ Prethodna
+            </a>
+<a class="bg-emerald-700 hover:bg-emerald-600 px-6 py-3 rounded-lg" href="#section-4">
+                Sledeća ↓
+            </a>
+</div>
+</section>
+ SECTION 4 - PROCES KUPOVINE 
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-4">
+<div class="flex-none text-center py-8 px-4">
+<h1 class="text-3xl md:text-4xl font-bold">
+                PROCES KUPOVINE
+            </h1>
+</div>
+<!-- BOOKING STEPS -->
+<div class="flex-1 min-h-0 grid grid-cols-5 gap-4 px-5 pb-4">
+<!-- STEP 1 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
+<span class="text-3xl font-bold">1.</span>
+<div class="w-12 border-t-2 border-pink-400 my-5"></div>
+<h2 class="text-xl font-bold mb-5">
+                    After booking the order
+                </h2>
+<div class="w-12 border-t border-pink-400 mb-5"></div>
+<p class="text-lg md:text-xl">
+                    The client receives a generic confirmation email.
+                </p>
+</div>
+<!-- STEP 2 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
+<span class="text-3xl font-bold">2.</span>
+<div class="w-12 border-t-2 border-pink-400 my-5"></div>
+<h2 class="text-xl font-bold mb-5">
+                    Porudžbina leaves the warehouse
+                </h2>
+<div class="w-12 border-t border-pink-400 mb-5"></div>
+<p class="text-lg md:text-xl">
+                    The client receives an email with the invoice.
+                </p>
+</div>
+<!-- STEP 3 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
+<span class="text-3xl font-bold">3.</span>
+<div class="w-12 border-t-2 border-pink-400 my-5"></div>
+<h2 class="text-xl font-bold mb-5">
+                    Transport agency takes the order
+                </h2>
+<div class="w-12 border-t border-pink-400 mb-5"></div>
+<p class="text-lg md:text-xl">
+                    DHL / UPS sends the client an email with delivery information.
+                </p>
+</div>
+<!-- STEP 4 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
+<span class="text-3xl font-bold">4.</span>
+<div class="w-12 border-t-2 border-pink-400 my-5"></div>
+<h2 class="text-xl font-bold mb-5">
+                    The client receives the order
+                </h2>
+<div class="w-12 border-t border-pink-400 mb-5"></div>
+<p class="text-lg md:text-xl">
+                    The client has 14 DAYS to make a claim or cancel and return the order.
+                </p>
+</div>
+<!-- STEP 5 -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-800 hover:bg-pink-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center h-full" data-reveal="">
+<span class="text-3xl font-bold">5.</span>
+<div class="w-12 border-t-2 border-pink-400 my-5"></div>
+<h2 class="text-xl font-bold mb-5">
+                    Return / cancellation
+                </h2>
+<div class="w-12 border-t border-pink-400 mb-5"></div>
+<p class="text-lg md:text-xl">
+                    The client pays the return costs when cancelling. If the order is damaged, Playmobil covers them.
+                </p>
+</div>
+</div>
+<div class="flex justify-between p-6">
+<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-3">
+                ↑ Prethodna
+            </a>
+<a class="bg-pink-700 hover:bg-pink-600 px-6 py-3 rounded-lg" href="#section-5">
+                Sledeća ↓
+            </a>
+</div>
+</section>
+<!-- SECTION 5 - SAP GENERAL GUIDELINES -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-5">
+<!-- TITLE -->
+<div class="flex-none text-center py-8 px-4">
+<h1 class="text-3xl md:text-4xl font-bold">
+                Opšte SAP smernice
+            </h1>
+</div>
+<!-- CARDS -->
+<div class="flex-1 min-h-0 grid grid-cols-3 gap-6 px-6 pb-4">
+<!-- CARD 1 - SALES ORGANIZATION -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-8" data-reveal="">
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
+                    Organizacija prodaje
+                </h2>
+<div class="w-16 border-t-2 border-purple-400"></div>
+<div class="w-full bg-gray-800 rounded-xl p-5">
+<p class="text-lg text-gray-400 mb-2">Španija</p>
+<p class="text-3xl md:text-4xl font-bold">2090</p>
+</div>
+<div class="w-full bg-gray-800 rounded-xl p-5">
+<p class="text-lg text-gray-400 mb-2">Portugal</p>
+<p class="text-3xl md:text-4xl font-bold">2095</p>
+</div>
+</div>
+<!-- CARD 2 - ORDER TYPES -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-4" data-reveal="">
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
+                    Tipovi porudžbina
+                </h2>
+<div class="w-16 border-t-2 border-purple-400 mb-2"></div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">ZTAC</p>
+<p class="text-lg mt-1">Individual spare parts and DS orders</p>
+</div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">ZTA3</p>
+<p class="text-lg mt-1">Reklamacije / Complaints</p>
+</div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">ZG2R</p>
+<p class="text-lg mt-1">Credit Note</p>
+</div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">L2</p>
+<p class="text-lg mt-1">Invoice</p>
+</div>
+</div>
+<!-- CARD 3 - PAYMENT METHODS -->
+<div class="opacity-0 translate-y-5 transition-all duration-500 ease-out bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center gap-4" data-reveal="">
+<h2 class="text-2xl md:text-3xl font-bold text-purple-300">
+                    Načini plaćanja
+                </h2>
+<div class="w-16 border-t-2 border-purple-400 mb-2"></div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">DE22</p>
+<p class="text-lg mt-1">Free of charge</p>
+<p class="text-sm text-gray-400">(Reklamacije)</p>
+</div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">DE01</p>
+<p class="text-lg mt-1">Bankovni transfer</p>
+<p class="text-sm text-gray-400">(Email orders)</p>
+</div>
+<div class="w-full bg-gray-800 rounded-xl p-4">
+<p class="text-2xl font-bold text-purple-200">PBYL</p>
+<p class="text-lg mt-1">Plaćanje putem linka</p>
+<p class="text-sm text-gray-400">(Email orders)</p>
+</div>
+</div>
+</div>
+<!-- NAVIGATION -->
+<div class="flex justify-between p-6">
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-4">
+                ↑ Prethodna
+            </a>
+<a class="bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-6">
+                Sledeća ↓
+            </a>
+</div>
+</section>
+<!-- SECTION 6 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-6">
+<!-- Heading -->
+<div class="text-center pt-8 pb-4 px-6 opacity-0 translate-y-5 transition-all duration-500 ease-out" data-reveal="">
+<h2 class="text-3xl font-bold tracking-wide">
+                Reklamacije – ZTA3 proces
+            </h2>
+</div>
+<!-- Content -->
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-6">
+<div class="w-full max-w-5xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-8 flex flex-col justify-center gap-8 transition-all duration-300 opacity-0 translate-y-5" data-reveal="">
+ Reklamacije 
+<div class="text-center">
+<h3 class="text-2xl font-bold text-emerald-400 mb-4">
+                        Reklamacije
+                    </h3>
+<p class="text-xl text-gray-200 leading-relaxed">
+                        We receive an email reporting a missing or defective part.
+                    </p>
+</div>
+<div class="border-t border-emerald-800"></div>
+<!-- Creating ZTA3 -->
+<div>
+<h3 class="text-2xl font-bold text-emerald-400 mb-6 text-center">
+                        Creating a ZTA3
+                    </h3>
+<ul class="space-y-5 text-lg text-gray-200">
+<li class="flex items-start gap-3">
+<span class="text-emerald-400 font-bold">01.</span>
+<span>Check whether the customer already exists in the system or needs to be created.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-emerald-400 font-bold">02.</span>
+<span>Enter the ZTA3 order.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-emerald-400 font-bold">03.</span>
+<span>Note down and register the claim reference number.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-emerald-400 font-bold">04.</span>
+<span>Respond to the customer.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Navigation -->
+<div class="flex justify-between items-center px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-5">
+                ← Prethodna
+            </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-7">
+                Sledeća →
+            </a>
+</div>
+</section>
+<!-- SECTION 7 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-7">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Reklamacije – provera postojećih korisnika
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<p class="text-xl text-pink-300 font-semibold text-center">
+                    Check whether the customer already exists in SAP.
+                </p>
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP customer search process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-18.png" title="Kliknite za uvećanje"/>
+<div class="text-center bg-gray-800 rounded-xl p-4">
+<p class="text-lg font-semibold text-pink-300">
+                        Važno
+                    </p>
+<p class="text-gray-200 text-lg">
+                        Note down the customer number to create the ZTA3 claim.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-6">
+                ← Prethodna
+            </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-8">
+                Sledeća →
+            </a>
+</div>
+</section>
+<!-- SECTION 8 - PURPLE -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-8">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Reklamacije – kreiranje novog korisnika
+            </h2>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
+<!-- SAP screenshots -->
+<div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-purple-300 text-center mb-4">
+                    Korisnik Creation in SAP
+                </h3>
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP new customer creation" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-19.png" title="Kliknite za uvećanje"/>
+</div>
+<!-- Required information -->
+<div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-purple-300 text-center mb-5">
+                    Korisnik Details
+                </h3>
+<ul class="space-y-3 text-gray-200 text-base">
+<li>• Title (Mr./Mrs.)</li>
+<li>• Surname and first name</li>
+<li>• Street and address</li>
+<li>• Postal code and city</li>
+<li>• Country and region</li>
+<li>• Tax identification number (DNI/CIF)</li>
+<li>• Telephone number</li>
+<li>• Email address</li>
+</ul>
+<div class="mt-auto bg-gray-800 rounded-xl p-4">
+<p class="font-bold text-purple-300 mb-2">
+                        Create Porudžbina
+                    </p>
+<p class="text-gray-200 text-sm">
+                        Select <strong>ZTA3</strong> for claims or
+                        <strong>ZTAC</strong> for orders if you are
+                        going to create an order immediately afterwards.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-7">
+                ← Prethodna
+            </a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-9">
+                Sledeća →
+            </a>
+</div>
+</section>
+<!-- SECTION 9 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-9">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Reklamacije – kreiranje ZTA3
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-emerald-300 text-center">
+                    Enter the ZTA3 order in SAP
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTA3 order creation process" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-20.png" title="Kliknite za uvećanje"/>
+</div>
+<div class="bg-gray-800 rounded-xl p-4 text-center">
+<p class="text-lg font-bold text-emerald-300">
+                        Važno – Step 5
+                    </p>
+<p class="text-gray-200 text-lg">
+                        Note down the claim reference number after saving the ZTA3.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-8">
+                ← Prethodna
+            </a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-10">
+                Sledeća →
+            </a>
+</div>
+</section>
+<!-- SECTION 10 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-10">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Reklamacije – evidentiranje i odgovor
+            </h2>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
+<!-- Screenshot -->
+<div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
+                    Register the Claim
+                </h3>
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="Claim tracking spreadsheet and customer email example" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-21.png" title="Kliknite za uvećanje"/>
+</div>
+<!-- Reply -->
+<div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
+                    Reply to the Korisnik
+                </h3>
+<p class="text-gray-200 text-base mb-4">
+                    Make sure the claim is registered and the customer receives
+                    a clear update.
+                </p>
+<ul class="space-y-3 text-gray-200 text-base">
+<li>• Record the claim reference number.</li>
+<li>• Confirm that the request has been received.</li>
+<li>• Inform the customer that the replacement parts have been requested from Germany.</li>
+<li>• Provide the claim reference number.</li>
+<li>• Explain that delivery may take a few weeks.</li>
+<li>• Ask the customer to contact us again if the parts have not arrived within approximately 20 working days.</li>
+</ul>
+<div class="mt-auto bg-gray-800 rounded-xl p-4">
+<p class="text-pink-300 font-bold mb-1">
+                        Važno
+                    </p>
+<p class="text-gray-200 text-sm">
+                        Ask customers not to send duplicate emails, as this may delay claim processing.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-9">
+                ← Prethodna
+            </a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-11">
+                Sledeća →
+            </a>
+</div>
+</section>
+<!-- SECTION 11 - PURPLE -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-11">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Porudžbine putem emaila – kreiranje ZTAC
+            </h2>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
+<div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-purple-300 text-center mb-4">
+                    Porudžbina Processing
+                </h3>
+<ul class="space-y-4 text-gray-200 text-lg">
+<li>01. Check whether the customer already exists or needs to be created.</li>
+<li>02. Enter the ZTAC order in SAP.</li>
+<li>03. Send the quotation to the customer.</li>
+</ul>
+</div>
+<div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-4 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="Customer email with requested products" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-22.png" title="Kliknite za uvećanje"/>
+</div>
+</div>
+<div class="px-8 pb-5">
+<div class="bg-gray-900 rounded-xl p-4 text-center">
+<p class="font-bold text-purple-300 mb-2">Email Porudžbina Restrictions</p>
+<p class="text-gray-200 text-base">
+                    Maximum 40 different product references and 20 units of the same reference per order.
+                </p>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-10">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-12">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 12 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-12">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Porudžbine putem emaila – provera postojećih korisnika
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-emerald-300 text-center">
+                    Check whether the customer already exists in SAP.
+                </h3>
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP customer search process for ZTAC" class="w-full max-h-[430px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-23.png" title="Kliknite za uvećanje"/>
+<div class="bg-gray-800 rounded-xl p-4 text-center">
+<p class="font-bold text-emerald-300 text-lg mb-1">
+                        Važno
+                    </p>
+<p class="text-gray-200 text-lg">
+                        Note down the customer number to create the ZTAC order.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-11">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-13">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 13 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-13">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Porudžbine putem emaila – kreiranje novog korisnika
+            </h2>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
+<div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-4 flex flex-col justify-center opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP new customer creation form" class="w-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-24.png" title="Kliknite za uvećanje"/>
+</div>
+<div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 text-center mb-4">
+                    Required Korisnik Details
+                </h3>
+<ul class="space-y-2 text-gray-200 text-base">
+<li>• Title (Mr./Mrs.)</li>
+<li>• Surname and first name</li>
+<li>• Street and address</li>
+<li>• Postal code and city</li>
+<li>• Country and region</li>
+<li>• Tax identification number (DNI/CIF)</li>
+<li>• Telephone number</li>
+<li>• Email address</li>
+</ul>
+<div class="mt-auto bg-gray-800 rounded-xl p-4">
+<p class="font-bold text-pink-300 mb-2">
+                        Create Porudžbina
+                    </p>
+<p class="text-gray-200 text-sm">
+                        Select <strong>ZTAC</strong> for orders or
+                        <strong>ZTA3</strong> for claims if you are
+                        creating an order immediately afterwards.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-12">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-14">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 14 - PURPLE -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-14">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Unos ZTAC porudžbine – koraci 1–5
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-purple-300 text-center">
+                    Follow the numbered steps in SAP
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTAC order entry steps 1 to 5" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-25.png" title="Kliknite za uvećanje"/>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-13">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-15">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 15 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-15">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Unos ZTAC porudžbine – koraci 6–9
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-emerald-300 text-center">
+                    Continue following the numbered steps in SAP
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZTAC order entry steps 6 to 9" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-26.png" title="Kliknite za uvećanje"/>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-14">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-16">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 16 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-16">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Slanje ponude korisniku
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 text-center">
+                    Quotation + Terms &amp; Conditions
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="Customer email and order quotation with Terms and Conditions" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-27.png" title="Kliknite za uvećanje"/>
+</div>
+<p class="text-center text-gray-200 text-lg">
+                    Send the quotation and the Terms &amp; Conditions to the customer.
+                </p>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-15">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-17">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 17 - PURPLE -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-17">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Korisnik prihvata ponudu – plaćanje
+            </h2>
+<p class="text-gray-300 mt-2">The customer can complete the purchase using one of two payment methods.</p>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
+<div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-2xl font-bold text-purple-300 text-center mb-5">
+                    Bank Transfer
+                </h3>
+<ul class="space-y-4 text-gray-200 text-base">
+<li>• Email the customer with the bank account details, quotation and Terms &amp; Conditions.</li>
+<li>• Inform Anabel García at <strong>anabel_garcia@Playmobil.de</strong> about the expected payment.</li>
+<li>• Include the order number, customer number and amount to be paid.</li>
+<li>• Once payment is received, Anabel will confirm it by email.</li>
+<li>• Only then can you remove <strong>OPERATION TO BE CLARIFIED</strong> so the order can be dispatched.</li>
+</ul>
+</div>
+<div class="bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-2xl font-bold text-purple-300 text-center mb-5">
+                    Payment by Link
+                </h3>
+<ul class="space-y-5 text-gray-200 text-base">
+<li>• Modify the payment terms of the order.</li>
+<li>• Inform the customer that the payment link is valid for <strong>24 hours</strong>.</li>
+<li>• Inform Anabel García at <strong>anabel_garcia@Playmobil.de</strong> once the payment has been made.</li>
+<li>• Include the order number, customer number and payment amount.</li>
+</ul>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-16">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-18">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 18 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-18">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Izmena / pregled porudžbina i reklamacija
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP order modification and viewing process" class="w-full max-h-[350px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-29.png" title="Kliknite za uvećanje"/>
+<p class="text-gray-200 text-center text-lg">
+                    Use this process to modify quantities or remove items from an existing order.
+                </p>
+<div class="bg-gray-800 rounded-xl p-4">
+<p class="text-emerald-300 font-bold text-center text-lg mb-2">
+                        Važno – OPERATION TO BE CLARIFIED
+                    </p>
+<p class="text-gray-200 text-center">
+                        After making changes, set the order back to
+                        <strong>OPERATION TO BE CLARIFIED</strong>.
+                    </p>
+<p class="text-red-300 text-center font-semibold mt-3">
+                        If this status is not applied, the order will be invoiced and dispatched.
+                    </p>
+<p class="text-gray-300 text-center text-sm mt-2">
+                        Only remove this status once Anabel García confirms the payment or the customer has paid by link.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-17">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-19">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 19 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-19">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Plaćanje putem linka – SAP proces
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-4 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 text-center">
+                    Automatic Payment Email
+                </h3>
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP payment link process and automatic payment email" class="w-full max-h-[380px] object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-30.png" title="Kliknite za uvećanje"/>
+<div class="bg-gray-800 rounded-xl p-4 text-center">
+<p class="text-pink-300 font-bold text-lg mb-2">
+                        Važno
+                    </p>
+<p class="text-gray-200 text-lg">
+                        When you save the changes, SAP automatically sends an email to the customer requesting payment.
+                    </p>
+<p class="text-gray-200 mt-2">
+                        The order is validated automatically. <strong>Do not remove OPERATION TO BE CLARIFIED.</strong>
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-18">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-20">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 20 - PURPLE -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-20">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Kako odgovarati korisnicima
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-5xl bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-8 flex flex-col justify-center gap-6 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<div class="flex items-start gap-4">
+<span class="text-purple-300 font-bold text-2xl">01.</span>
+<p class="text-gray-200 text-lg">
+                        Use existing email templates from the
+                        <strong>Playmobil Ibérica Korisnik Service Manual</strong>.
+                    </p>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-purple-300 font-bold text-2xl">02.</span>
+<p class="text-gray-200 text-lg">
+                        If no template is available or the case is specific, personalize your response.
+                    </p>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-purple-300 font-bold text-2xl">03.</span>
+<div class="text-gray-200 text-lg">
+                        If there is a problem involving accidents, dangerous situations, missing parts or items that cannot be entered into SAP, report it to:
+
+                        <p class="text-purple-300 font-semibold mt-2">
+                            María Gómez
+                        </p>
+<p class="text-base">
+                            maria_gomez@playmobil.de
+                        </p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-purple-300 font-bold text-2xl">04.</span>
+<p class="text-gray-200 text-lg">
+                        Once an email has been resolved, move it to the <strong>Sent</strong> folder.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-19">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-21">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 21 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-21">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Problemi u transportu
+            </h2>
+<p class="text-gray-300 mt-2">
+                Lost or undelivered parcels, delivery delays, address changes and cancellations
+            </p>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-3 gap-5 px-7 pb-5">
+<div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">DHL</h3>
+<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
+<p class="text-gray-200 text-sm break-words">clientesparcel.spain@dhl.com</p>
+<p class="text-gray-200 text-sm break-words mb-5">complaints.dhl@dhl.com</p>
+<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
+<p class="text-gray-200 text-lg">+34 910 783 066</p>
+</div>
+<div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">CTT / Correos</h3>
+<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
+<p class="text-gray-200 text-sm break-words mb-5">correos@correos.com</p>
+<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
+<p class="text-gray-200 text-lg">+34 624 072 366</p>
+</div>
+<div class="bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-2xl font-bold text-emerald-300 text-center mb-5">UPS</h3>
+<p class="text-gray-400 text-sm font-semibold mb-2">EMAIL</p>
+<p class="text-gray-200 text-sm break-words">preferredes@ups.com</p>
+<p class="text-gray-200 text-sm break-words">preferredde@ups.com</p>
+<p class="text-gray-200 text-sm break-words mb-5">custsvceses@ups.com</p>
+<p class="text-gray-400 text-sm font-semibold mb-2">PHONE</p>
+<p class="text-gray-200 text-lg">+34 902 88 88 40</p>
+</div>
+</div>
+<div class="px-8 pb-5">
+<div class="bg-gray-900 rounded-xl p-4 text-center">
+<p class="text-emerald-300 font-bold mb-2">Važno Notes</p>
+<p class="text-gray-200 text-sm">
+                    Address changes are not guaranteed. You can email the carrier to request a change, but it cannot be guaranteed.
+                </p>
+<p class="text-gray-200 text-sm mt-2">
+                    Cancellation deadline: 14 working days from the date the goods arrive at our facilities.
+                </p>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-20">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-22">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 22 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-22">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Povraćaj robe i refundacije
+            </h2>
+</div>
+<div class="flex-1 min-h-0 grid grid-cols-2 gap-5 px-7 pb-5">
+<div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 mb-5">
+                    Reasons for Return
+                </h3>
+<div class="space-y-5 text-gray-200 text-lg">
+<p><span class="text-pink-300 font-bold">01.</span> Korisnik error when placing the order or change of mind.</p>
+<p><span class="text-pink-300 font-bold">02.</span> Error during order preparation.</p>
+<p><span class="text-pink-300 font-bold">03.</span> Korisnik receives a damaged parcel.</p>
+</div>
+<div class="mt-auto bg-gray-800 rounded-xl p-4">
+<p class="text-pink-300 font-bold mb-2">Return Form</p>
+<a class="text-blue-300 underline break-words" href="https://www.playmobil.com/es-es/devolucion/" target="_blank">
+                        PLAYMOBIL Returns Page
+                    </a>
+</div>
+</div>
+<div class="bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-6 flex flex-col opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 mb-5">
+                    Return Conditions
+                </h3>
+<ul class="space-y-4 text-gray-200 text-base">
+<li>• Return costs are covered by the customer.</li>
+<li>• If the order arrives damaged and the damage is reported at the time of delivery (as stated on the delivery receipt), PLAYMOBIL IBÉRICA covers the return costs.</li>
+<li>• The customer has <strong>14 working days</strong> to cancel the order.</li>
+<li>• Refunds are processed within <strong>14 working days</strong> from the date the goods arrive at our facilities.</li>
+</ul>
+<div class="mt-auto bg-gray-800 rounded-xl p-4">
+<p class="text-pink-300 font-bold mb-1">Važno</p>
+<p class="text-gray-200 text-sm">
+                        Contact MRW for collections paid for by PLAYMOBIL IBÉRICA.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-21">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-23">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 23 - PURPLE -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-23">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                ZG2R – knjižno odobrenje (koraci 1–4)
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-purple-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-purple-300 text-center">
+                    Follow the numbered steps in SAP
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZG2R credit note creation steps 1 to 4" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-34.png" title="Kliknite za uvećanje"/>
+</div>
+<div class="bg-gray-800 rounded-xl p-3 text-center">
+<p class="text-purple-300 font-bold">
+                        Važno: Note down the document number.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-22">← Prethodna</a>
+<a class="bg-gray-800 hover:bg-purple-800 px-6 py-3 rounded-xl transition" href="#section-24">Sledeća →</a>
+</div>
+</section>
+<!-- SECTION 24 - EMERALD -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#26332F] to-[#176B58]" id="section-24">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                ZG2R – knjižno odobrenje (koraci 5–8)
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-emerald-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-emerald-300 text-center">
+                    Continue following the numbered steps in SAP
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP ZG2R credit note creation steps 5 to 8" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-35.png" title="Kliknite za uvećanje"/>
+</div>
+<div class="bg-gray-800 rounded-xl p-4 text-center">
+<p class="text-emerald-300 font-bold mb-2">
+                        After Creating the Credit Note
+                    </p>
+<p class="text-gray-200 text-sm">
+                        Note down the document number and inform
+                        <strong>anabel_garcia@playmobil.de</strong> about the credit note.
+                    </p>
+<p class="text-gray-300 text-sm mt-2">
+                        If you have any doubts, contact
+                        <strong>maria_gomez@playmobil.de</strong>.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-emerald-800 px-6 py-3 rounded-xl transition" href="#section-23">← Prethodna</a>
+
+</div>
+</section>
+<!-- SECTION 25 - PINK -->
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#332831] to-[#9B587D]" id="section-25">
+<div class="text-center pt-7 pb-3 px-6">
+<h2 class="text-3xl font-bold tracking-wide">
+                Praćenje pošiljki u SAP-u
+            </h2>
+</div>
+<div class="flex-1 min-h-0 flex items-center justify-center px-8 pb-5">
+<div class="w-full max-w-6xl h-full max-h-[620px] bg-gray-900 hover:bg-pink-950 rounded-2xl shadow-lg p-5 flex flex-col gap-3 opacity-0 translate-y-5 transition-all duration-500" data-reveal="">
+<h3 class="text-xl font-bold text-pink-300 text-center">
+                    Checking Shipment Status
+                </h3>
+<div class="flex-1 min-h-0 flex items-center justify-center">
+<img @click.stop="openLightbox($event.currentTarget.src)" alt="SAP shipment tracking and carrier tracking process" class="w-full h-full object-contain rounded-xl cursor-zoom-in hover:opacity-90 transition" src="assets/sap-page-36.png" title="Kliknite za uvećanje"/>
+</div>
+</div>
+</div>
+<div class="flex justify-between px-8 pb-5">
+<a class="bg-gray-800 hover:bg-pink-800 px-6 py-3 rounded-xl transition" href="#section-24">← Prethodna</a>
+
+<a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26">Sledeća →</a></div>
+</section>
+<section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-26">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Svakodnevni zadaci – pozivi i mejlovi</h1></div>
+<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Telefonska i email podrška</h2><p class="text-lg">Na telefonske i email upite treba odgovarati ljubazno i efikasno, uz rešavanje nedoumica korisnika.</p><p class="text-lg mt-4">Know the website <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener" target="_blank">www.playmobil.es</a> thoroughly and visit it regularly to stay up to date with promotions and new products.</p></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-4">Šta treba pratiti na sajtu</h2><p class="text-lg">Glavni baner na početnoj stranici prikazuje aktuelnu glavnu promociju i ostale novosti.</p><p class="text-lg mt-4">Veoma je važno poznavati uslove promocija jer one generišu veliki broj korisničkih pitanja.</p><p class="text-lg mt-4">Upiti mogu biti različiti: od informacija o isporuci porudžbine, proizvodima i promocijama, do rezervnih delova i povraćaja. Sve ove teme detaljnije obrađujemo u nastavku obuke.</p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-25">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-27">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Promocije i telefonski upiti</h1></div>
+<div class="grid md:grid-cols-2 gap-5 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3">Promocije uglavnom nisu kompatibilne sa</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>pojedinačnim ili rezervnim delovima – <a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/piezas-sueltas-manuales-de-instrucciones/" rel="noopener" target="_blank">spare parts and instructions</a></li><li>drugim promocijama i kodovima za popust</li><li><a class="text-sky-300 underline" href="https://www.playmobil.com/es-es/resultado-de-la-busqueda/?q=packs+promocionales" rel="noopener" target="_blank">promotivnim paketima</a></li><li>novitetima (proizvodima plasiranim na tržište u poslednja dva meseca)</li></ul></article><article class="bg-gray-900 rounded-2xl p-6 shadow-lg" data-reveal=""><h2 class="text-2xl font-bold mb-3">Šta ne smemo da radimo telefonom</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Tražiti lične podatke radi obrade porudžbine ili reklamacije. Korisnik to mora uraditi putem <a class="text-sky-300 underline" href="https://www.playmobil.es" rel="noopener" target="_blank">the website</a> or email <a class="text-sky-300 underline" href="mailto:clientes@playmobil.de">clientes@playmobil.de</a>.</li><li>Saopštavati cene proizvoda. Korisnika treba uputiti na sajt.</li><li>Davati šifre rezervnih delova. Treba zamoliti korisnika da pošalje email ili ga uputiti na odeljak sajta sa uputstvima za sklapanje.</li></ul><p class="text-amber-300 font-semibold mt-4">Ovi upiti se uvek rešavaju putem emaila.</p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-26">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-28">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">Najvažnije informacije za SAC</h1></div>
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 px-6 pb-5 flex-1 min-h-0"><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Isporuka</h2><p>Standardne porudžbine: <b>6–8 working days</b>.</p><p class="mt-2">Porudžbine rezervnih delova: do <b>10 weeks</b>.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Načini plaćanja</h2><p>Putem sajta: kreditna kartica i PayPal.</p><p class="mt-2">Porudžbine putem emaila: bankovni transfer ili kreditna kartica.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Povraćaj i izmene</h2><p>Rok za povraćaj: <b>14 working days</b> od prijema robe.</p><p class="mt-2">Potvrđene porudžbine i adrese nije moguće menjati.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Troškovi dostave</h2><p>Kopneni deo Španije i Balearska ostrva: <b>€9</b>; besplatno za porudžbine preko €60.</p><p class="mt-2">Kanarska ostrva, Seuta i Melilja: <b>€22</b>; besplatno za porudžbine preko €150.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Porudžbine putem emaila</h2><p>Porudžbine realizovane putem emaila ne uključuju promotivne pogodnosti.</p></article><article class="bg-gray-900 rounded-2xl p-5" data-reveal=""><h2 class="font-bold text-xl mb-2">Pojedinačni delovi figure</h2><p>Nije moguće naručivati pojedinačne delove iste figure, kao što su perike, brade, ruke i slično.</p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-27">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-29">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">B) SAC statistika</h1></div>
+<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 shadow-lg w-full" data-reveal=""><p class="text-xl mb-5">Svakog dana pratimo broj primljenih emailova. Za to otvaramo sledeću putanju:</p><p class="text-xl font-bold text-sky-300 mb-7 break-all">P:\ATENCION_AL_CLIENTE\ESTADISTICAS EMAIL SAC</p><div class="grid md:grid-cols-3 gap-4"><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Emailovi u sandučetu</h2><p>Ujutru, pre otvaranja poruka, beležimo ukupan broj emailova koji se vidi u sandučetu.</p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Primljeni emailovi</h2><p>Beležimo broj emailova primljenih prethodnog dana, koristeći odgovarajuću pretragu u Outlooku.</p></div><div class="bg-gray-800 rounded-xl p-5"><h2 class="text-xl font-bold mb-2">Porudžbine i reklamacije</h2><p>Nakon čitanja i klasifikovanja svih emailova, beležimo koliko njih se odnosi na porudžbine i reklamacije.</p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-28">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-30">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">C) Provera blokiranih porudžbina u SAP-u</h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Prva pretraga – VA14L</h2><p class="text-lg">U SAP-u koristimo transakciju <b class="text-sky-300">VA14L</b> kako bismo proverili da li postoje blokirane porudžbine zbog visokog iznosa u Španiji i Portugalu.</p><p class="mt-4">U polju <b>Blokada isporuke – zaglavlje</b>, prvo vršimo pretragu sa sledećim parametrima:</p><ul class="list-disc pl-6 mt-2 space-y-2 text-lg"><li>Isporuka block: <b>Z1</b></li><li>Organizacija prodaje: <b>2090</b> (Španija)</li><li>Kanal distribucije: <b>01</b></li><li>Sektor: <b>01</b></li></ul><p class="mt-4">Klikom na ikonicu sata prikazujemo eventualno blokirane porudžbine.</p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Uklanjanje blokade</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Otvaramo porudžbinu klikom na njen broj u tabeli rezultata.</li><li>U polju <b>Isporuka block</b>, uklanjamo opciju <b>Amount check</b> i čuvamo izmene.</li><li>Čuvamo porudžbinu.</li><li>Zatvaramo porudžbinu, vraćamo se na početnu stranicu i klikćemo na zeleno dugme za čuvanje.</li></ol><p class="mt-4 text-amber-300 font-semibold">Ponavljamo pretragu i za Z0, pored Z1.</p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-29">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-31">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">C) Blokirane porudžbine – provera za Portugal</h1></div>
+<div class="max-w-5xl mx-auto px-6 pb-5 flex-1 flex items-center"><div class="bg-gray-900 rounded-2xl p-7 md:p-10 w-full" data-reveal=""><h2 class="text-2xl font-bold mb-5">Iste provere ponavljamo za Portugal</h2><p class="text-lg mb-6">Obe pretrage blokada isporuke radimo koristeći portugalsku organizaciju prodaje:</p><div class="grid md:grid-cols-2 gap-4"><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300">Španija</p><p class="text-3xl font-bold mt-2">2090</p><p class="mt-3">Z1 and Z0</p></div><div class="bg-gray-800 rounded-xl p-6"><p class="text-sm uppercase tracking-wider text-gray-300">Portugal</p><p class="text-3xl font-bold mt-2">2095</p><p class="mt-3">Z1 and Z0</p></div></div><p class="text-xl font-bold text-emerald-300 mt-7">Dnevni rezime: 2090 – Z1 and Z0; 2095 – Z1 and Z0.</p><p class="text-gray-300 mt-3">Za svaku pretragu kliknemo na sat, pregledamo rezultate i uklanjamo blokadu ukoliko je potrebno.</p></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-30">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-32">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">D) Računovodstveni emailovi – blokirani korisnici</h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Dnevni računovodstveni izveštaji</h2><p class="text-lg">Svakodnevno dobijamo automatske emailove sa računovodstvenim izveštajima. Potrebno je reagovati samo na dva izveštaja:</p><ul class="list-disc pl-6 mt-4 space-y-3 text-lg"><li>Korisnici koje treba blokirati jer su uneli lažne ili netačne podatke prilikom poručivanja, čime su prekršili Uslove i odredbe.</li><li>Izveštaji o otkazivanjima i refundacijama koje je vratila Nemačka.</li></ul><p class="mt-4">Ostale izveštaje arhiviramo u Outlook folderu Accounting.</p></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Blokiranje korisnika</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Otvaramo email sa izveštajem i pregledamo priloženi PDF sa spiskom korisnika koje treba blokirati.</li><li>Ukoliko se pojavi poruka <b>“Error en el bloque de la Contraparte”</b> šaljemo email računovodstvu na adresu <a class="text-sky-300 underline" href="mailto:anabel_garcia@playmobil.de">anabel_garcia@playmobil.de</a> sa zahtevom da blokiraju korisnike.</li><li>Korisnicima čiji su nalozi blokirani šaljemo email i obaveštavamo ih da je njihov nalog deaktiviran.</li><li>Email poslat prethodnog dana ostavljamo u folderu Accounting kao nepročitan. Prosleđujemo ga tako da svi korisnici i SAC budu u BCC polju, kako bismo ga lako pronašli narednog dana.</li></ol></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-31">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-33">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">D) Izveštaji o otkazivanjima i refundacijama</h1></div>
+<div class="px-6 pb-5 flex-1 grid md:grid-cols-2 gap-5 min-h-0"><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Provera otkazivanja/refundacije</h2><ol class="list-decimal pl-6 space-y-3 text-lg"><li>Otvaramo izveštaj o otkazivanjima i refundacijama koji stiže iz Nemačke.</li><li>U SAP-u pokrećemo transakciju <b>VA05</b> za broj korisnika.</li><li>Proširujemo period pretrage na prethodna dva meseca.</li><li>Proveravamo da li korisnik ima odgovarajuću <b>ZTAI</b> porudžbinu i <b>RE</b> povraćaj koji je kreirala Nemačka.</li></ol></article><article class="bg-gray-900 rounded-2xl p-6" data-reveal=""><h2 class="text-2xl font-bold mb-3">Šta prijavljujemo računovodstvu</h2><ul class="list-disc pl-6 space-y-3 text-lg"><li>Ako su ZTAI porudžbina i RE povraćaj ispravni, prosleđujemo izveštaj računovodstvu kako bi izvršili refundaciju.</li><li>Ako postoji <b>ZTA3</b> sa istim sadržajem kao u porudžbini, refundacija nije ispravna jer smo već poslali besplatnu zamensku pošiljku.</li><li>Ako smo otvorili reklamaciju i poslali robu, obaveštavamo računovodstvo da ne refundira korisnika <b>noXXXX</b>; jer ćemo izdati fakturu <b>L2</b> kako bismo kompenzovali račun.</li></ul><p class="mt-4 text-amber-300">Za postupak izdavanja L2 fakture pogledati <b>J) Rectificación abonos – Facturas L2</b> i evidentirati u <b>MARKETING\ABONOS CONTABILIDAD_01</b>.</p></article></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-32">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-34">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">SAC prioriteti – božićni period</h1></div>
+<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal="">Opšti prioriteti PLAYMOBIL Ibérica su: brzo i kvalitetno rešavanje zahteva; informisanje korisnika o statusu pošiljki radi pravovremene isporuke i sprečavanja problema; i obezbeđivanje kvalitetne postprodajne podrške.</p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-2">Novembar – januar</h2><p class="text-gray-300 mb-5">Tokom božićnog perioda prioriteti su:</p><div class="grid md:grid-cols-3 gap-4"><div class="bg-rose-950/60 rounded-xl p-5"><p class="text-sm uppercase">Prioritet 1</p><h3 class="text-xl font-bold mt-2">Porudžbine i isporuka</h3><p class="mt-2">Upiti o porudžbinama i isporuci, brojevi za praćenje, promocije i ponude.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioritet 2</p><h3 class="text-xl font-bold mt-2">Postprodajna podrška</h3><p class="mt-2">Nedostajući ili neispravni delovi, poručivanje rezervnih delova i povraćaji.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioritet 3</p><h3 class="text-xl font-bold mt-2">Ostali zahtevi</h3><p class="mt-2">Svi ostali zahtevi korisnika.</p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-33">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-35">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-35">
+<div class="flex-none text-center py-6 px-4"><h1 class="text-2xl md:text-4xl font-bold">SAC prioriteti – ostatak godine</h1></div>
+<div class="px-6 pb-5 flex-1 flex flex-col justify-center gap-4 max-w-5xl mx-auto w-full"><p class="text-center text-lg text-gray-200" data-reveal="">Od februara do oktobra postprodajna podrška postaje glavni prioritet.</p><div class="bg-gray-900 rounded-2xl p-6 md:p-8" data-reveal=""><h2 class="text-2xl font-bold mb-5">Februar – oktobar</h2><div class="grid md:grid-cols-3 gap-4"><div class="bg-emerald-950/60 rounded-xl p-5"><p class="text-sm uppercase">Prioritet 1</p><h3 class="text-xl font-bold mt-2">Postprodajna podrška</h3><p class="mt-2">Nedostajući ili neispravni delovi, poručivanje rezervnih delova i povraćaji.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioritet 2</p><h3 class="text-xl font-bold mt-2">Porudžbine i isporuka</h3><p class="mt-2">Upiti o porudžbinama i isporuci, brojevi za praćenje, promocije i ponude.</p></div><div class="bg-gray-800 rounded-xl p-5"><p class="text-sm uppercase">Prioritet 3</p><h3 class="text-xl font-bold mt-2">Ostali zahtevi</h3><p class="mt-2">Svi ostali zahtevi korisnika.</p></div></div></div></div>
+<div class="flex justify-between p-5"><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-34">← Prethodna</a><a class="bg-indigo-700 hover:bg-indigo-600 px-5 py-3 rounded-lg" href="#section-36">Sledeća →</a></div></section><section class="h-dvh snap-start snap-always flex flex-col items-center justify-center text-center p-8 bg-gradient-to-r from-[#202124] via-[#292633] to-[#49316C]" id="section-36"><h1 class="opacity-0 translate-y-5 transition-all duration-500 text-4xl md:text-6xl font-bold" data-reveal="">Hvala na pažnji!</h1><p class="mt-8 text-xl text-gray-300">Designed by Bojan Dj.</p><a class="mt-10 bg-indigo-700 hover:bg-indigo-600 px-6 py-3 rounded-lg" href="#section-1">Nazad na početak</a></section></main>
+<button @click="menuOpen = !menuOpen" class="fixed top-4 right-4 z-40 rounded-xl bg-indigo-700 hover:bg-indigo-600 px-4 py-3 shadow-xl font-semibold" type="button">☰ Sekcije</button>
+<div @click.self="menuOpen=false" class="fixed inset-0 z-50 bg-black/70" x-cloak="" x-show="menuOpen" x-transition.opacity="">
+<aside class="absolute right-0 top-0 h-full w-full max-w-xl bg-gray-950 border-l border-gray-700 shadow-2xl flex flex-col" x-transition:enter="transition transform ease-out duration-300" x-transition:enter-end="translate-x-0" x-transition:enter-start="translate-x-full" x-transition:leave="transition transform ease-in duration-200" x-transition:leave-end="translate-x-full" x-transition:leave-start="translate-x-0">
+<div class="flex items-center justify-between p-5 border-b border-gray-700"><h2 class="text-2xl font-bold">Sekcije</h2><button @click="menuOpen=false" aria-label="Close" class="text-3xl px-3">×</button></div>
+<div class="flex gap-3 p-4 border-b border-gray-700"><a @click.prevent="location.href='index.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="index.html">🇬🇧 EN</a><a @click.prevent="location.href='es.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="es.html">🇪🇸 ES</a><a @click.prevent="location.href='sr.html'+location.hash" class="rounded-lg bg-gray-800 px-4 py-2" href="sr.html">🇷🇸 SR</a></div>
+<nav class="overflow-y-auto p-4 space-y-2" id="section-navigation"></nav>
+</aside>
+</div>
+<div @click.self="closeLightbox()" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-3 md:p-8" x-cloak="" x-show="lightboxSrc" x-transition.opacity="">
+<button @click="closeLightbox()" aria-label="Close image" class="absolute top-4 right-5 z-[101] text-white text-5xl leading-none bg-black/50 rounded-full w-14 h-14">×</button>
+<img :src="lightboxSrc" alt="Enlarged screenshot" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"/>
+</div><script>function presentationApp(){return {menuOpen:false,lightboxSrc:null,openLightbox(src){this.lightboxSrc=src;},closeLightbox(){this.lightboxSrc=null;},closeOverlays(){this.menuOpen=false;this.lightboxSrc=null;}}} document.addEventListener('alpine:init',()=>{const nav=document.getElementById('section-navigation'); if(!nav)return; const labels=[...document.querySelectorAll('main > section')].map((s)=>({id:s.id,title:s.querySelector('h1,h2')?.innerText?.trim()||s.id})); labels.forEach((item)=>{const a=document.createElement('a');a.href='#'+item.id;a.textContent=item.title;a.className='block rounded-lg px-4 py-3 bg-gray-900 hover:bg-indigo-900 border border-gray-800';a.addEventListener('click',()=>{document.getElementById(item.id)?.scrollIntoView({behavior:'smooth'});Alpine.$data(document.body).menuOpen=false;});nav.appendChild(a);});});</script></body>
+</html>
